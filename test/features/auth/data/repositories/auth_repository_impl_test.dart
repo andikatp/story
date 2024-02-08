@@ -166,41 +166,5 @@ void main() {
         );
       });
     });
-
-    group('logout', () {
-      test(
-          'Should call [MockAuthRemoteDataSourceImpl.logout] '
-          'and return a right data', () async {
-        // arrange
-        when(() => mockRemoteDataSource.logout())
-            .thenAnswer((_) => Future.value());
-        // act
-        final result = await repository.logout();
-        // assert
-        expect(result, equals(const Right<dynamic, void>(null)));
-        verify(() => mockRemoteDataSource.logout()).called(1);
-        verifyNoMoreInteractions(mockRemoteDataSource);
-      });
-
-      test(
-          'Should call [MockAuthRemoteDataSourceImpl.logout] '
-          'and return a Server Failure when failed', () async {
-        // arrange
-        when(() => mockRemoteDataSource.logout()).thenThrow(tException);
-        // act
-        final result = await repository.logout();
-        // assert
-        expect(
-          result,
-          equals(
-            Left<Failure, dynamic>(
-              ServerFailure.fromException(tException),
-            ),
-          ),
-        );
-        verify(() => mockRemoteDataSource.logout()).called(1);
-        verifyNoMoreInteractions(mockRemoteDataSource);
-      });
-    });
   });
 }

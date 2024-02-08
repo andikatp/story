@@ -14,5 +14,5 @@ class UserEntity extends Equatable {
   final String token;
 
   @override
-  List<String?> get props => [userId];
+  List<Object?> get props => [userId, name, token];
 }

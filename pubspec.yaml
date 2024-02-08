@@ -13,6 +13,7 @@ dependencies:
   equatable: ^2.0.5
   flutter:
     sdk: flutter
+  http: ^1.2.0
   internet_connection_checker_plus: ^2.2.0
   mocktail: ^1.0.3
   very_good_analysis: ^5.1.0
