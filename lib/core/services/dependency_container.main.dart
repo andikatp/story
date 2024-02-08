@@ -3,7 +3,25 @@ part of 'dependency_container.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  await _initSplash();
   await _initAuth();
+}
+
+Future<void> _initSplash() async {
+  //feature --> Splash
+  //Business Logic
+  sl
+    ..registerFactory(() => SplashCubit(checkUserLoggedIn: sl()))
+    // usecases
+    ..registerLazySingleton(() => CheckUserLoggedIn(repository: sl()))
+    // repositories
+    ..registerLazySingleton(
+      () => SplashScreenRepositoryImpl(localDataSource: sl()),
+    )
+    // datasources
+    ..registerLazySingleton(
+      () => SplashScreenLocalDataSourceImpl(preferences: sl()),
+    );
 }
 
 Future<void> _initAuth() async {
