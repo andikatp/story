@@ -7,7 +7,7 @@ class UserEntity extends Equatable {
     required this.token,
   });
 
-  const UserEntity.empty() : this(userId: '', name: '', token: '');
+  const UserEntity.empty() : this(userId: '1', name: '', token: '');
 
   final String userId;
   final String name;

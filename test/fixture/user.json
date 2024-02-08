@@ -1,0 +1,9 @@
+{
+  "error": false,
+  "message": "success",
+  "loginResult": {
+    "userId": "1",
+    "name": "",
+    "token": ""
+  }
+}

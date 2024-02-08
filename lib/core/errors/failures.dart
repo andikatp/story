@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:story/core/constants/app_constant.dart';
 import 'package:story/core/errors/exceptions.dart';
 
 abstract class Failure extends Equatable {
@@ -23,4 +24,8 @@ class CacheFailure extends Failure {
 
   CacheFailure.fromException(CacheException exception)
       : this(message: exception.message);
+}
+
+class InternetFailure extends Failure {
+  const InternetFailure() : super(message: AppConstant.noInternetConnection);
 }
