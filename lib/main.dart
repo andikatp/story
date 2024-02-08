@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:story/core/services/dependency_container.dart';
+import 'package:story/core/services/router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,15 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScreenUtilInit(
-      designSize: Size(412, 732),
+    return ScreenUtilInit(
+      designSize: const Size(412, 732),
       minTextAdapt: true,
-      child: MaterialApp(
-        home: Scaffold(
-          body: Center(
-            child: Text('its Working'),
-          ),
-        ),
+      child: MaterialApp.router(
+        routerConfig: router,
       ),
     );
   }
