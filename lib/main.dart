@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:story/core/res/theme.dart';
 import 'package:story/core/services/dependency_container.dart';
 import 'package:story/core/services/router.dart';
 
@@ -17,8 +18,10 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(412, 732),
       minTextAdapt: true,
-      child: MaterialApp.router(
+      builder: (_, __) => MaterialApp.router(
         routerConfig: router,
+        theme: AppTheme.currentTheme,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

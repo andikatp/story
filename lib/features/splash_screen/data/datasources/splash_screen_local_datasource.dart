@@ -17,7 +17,6 @@ class SplashScreenLocalDataSourceImpl implements SplashScreenLocalDataSource {
   @override
   Future<bool> isUserLoggedIn() async {
     try {
-      await Future<void>.delayed(const Duration(seconds: 2));
       final result = _preferences.getString(AppConstant.tokenKey);
       if (result == null) {
         return false;
