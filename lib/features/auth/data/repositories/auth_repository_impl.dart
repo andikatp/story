@@ -33,18 +33,6 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  @override
-  ResultFuture<void> logout() async {
-    try {
-      if (!await _networkInfo.isConnected) {
-        return const Left(InternetFailure());
-      }
-      final result = await _remoteDataSource.logout();
-      return Right(result);
-    } on ServerException catch (e) {
-      return Left(ServerFailure.fromException(e));
-    }
-  }
 
   @override
   ResultFuture<void> register({
