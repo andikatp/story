@@ -1,5 +1,5 @@
 import 'package:story/core/utils/typedef.dart';
-import 'package:story/features/auth/domain/entity/user.dart';
+import 'package:story/features/auth/domain/entity/user_entity.dart';
 
 abstract class AuthRepository {
   const AuthRepository();

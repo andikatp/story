@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:story/core/usecases/usecases.dart';
 import 'package:story/core/utils/typedef.dart';
-import 'package:story/features/auth/domain/entity/user.dart';
+import 'package:story/features/auth/domain/entity/user_entity.dart';
 import 'package:story/features/auth/domain/repositories/auth_repository.dart';
 
 class Login implements UseCaseWithParams<UserEntity, LoginParams> {

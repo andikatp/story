@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:story/core/errors/failures.dart';
-import 'package:story/features/auth/domain/entity/user.dart';
+import 'package:story/features/auth/domain/entity/user_entity.dart';
 import 'package:story/features/auth/domain/repositories/auth_repository.dart';
 import 'package:story/features/auth/domain/usecases/login.dart';
 
@@ -35,7 +35,7 @@ void main() {
       // act
       final result = await usecase(tParams);
       // assert
-      expect(result, equals(right<dynamic, UserEntity>(tUser)));
+      expect(result, equals(const Right<dynamic, UserEntity>(tUser)));
       verify(
         () => mockRepository.login(
           email: tParams.email,
@@ -58,7 +58,7 @@ void main() {
       // act
       final result = await usecase(tParams);
       // assert
-      expect(result, equals(left<Failure, dynamic>(tServerFailure)));
+      expect(result, equals(const Left<Failure, dynamic>(tServerFailure)));
       verify(
         () => mockRepository.login(
           email: tParams.email,

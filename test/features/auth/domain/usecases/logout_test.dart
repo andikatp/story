@@ -21,13 +21,13 @@ void main() {
 
     test(
         'Should call [AuthRepository.logout] '
-        'and return a right data', () async {
+        'and return a Right data', () async {
       // arrange
-      when(() => mockRepository.logout()).thenAnswer((_) async => right(null));
+      when(() => mockRepository.logout()).thenAnswer((_) async => const Right(null));
       // act
       final result = await usecase();
       // assert
-      expect(result, equals(right<dynamic, void>(null)));
+      expect(result, equals(const Right<dynamic, void>(null)));
       verify(() => mockRepository.logout());
       verifyNoMoreInteractions(mockRepository);
     });
@@ -37,11 +37,11 @@ void main() {
         'and return [ServerFailure]', () async {
       // arrange
       when(() => mockRepository.logout())
-          .thenAnswer((_) async => left(tServerFailure));
+          .thenAnswer((_) async => const Left(tServerFailure));
       // act
       final result = await usecase();
       // assert
-      expect(result, equals(left<Failure, dynamic>(tServerFailure)));
+      expect(result, equals(const Left<Failure, dynamic>(tServerFailure)));
       verify(() => mockRepository.logout());
       verifyNoMoreInteractions(mockRepository);
     });
