@@ -1,7 +1,7 @@
 import 'package:story/core/utils/typedef.dart';
 
-abstract class SplashScreenRepository {
-  const SplashScreenRepository();
+abstract class SplashRepository {
+  const SplashRepository();
 
   ResultFuture<bool> checkUserLoggedIn();
 }

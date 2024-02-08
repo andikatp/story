@@ -15,12 +15,12 @@ Future<void> _initSplash() async {
     // usecases
     ..registerLazySingleton(() => CheckUserLoggedIn(repository: sl()))
     // repositories
-    ..registerLazySingleton(
-      () => SplashScreenRepositoryImpl(localDataSource: sl()),
+    ..registerLazySingleton<SplashRepository>(
+      () => SplashRepositoryImpl(localDataSource: sl()),
     )
     // datasources
-    ..registerLazySingleton(
-      () => SplashScreenLocalDataSourceImpl(preferences: sl()),
+    ..registerLazySingleton<SplashLocalDataSource>(
+      () => SplashLocalDataSourceImpl(preferences: sl()),
     );
 }
 

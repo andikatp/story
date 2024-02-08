@@ -15,4 +15,7 @@ class AppConstant {
 
   // key
   static const String tokenKey = 'userToken';
+
+  // theme
+  static const String font = 'Roboto';
 }
