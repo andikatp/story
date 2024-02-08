@@ -12,4 +12,7 @@ class AppConstant {
       'Ups, API Error. please try again!';
   static const String cacheFailureMessage = 'Ups, API Error. please try again!';
   static const String generalFailureMessage = 'Ups, check your connection';
+
+  // key
+  static const String tokenKey = 'userToken';
 }

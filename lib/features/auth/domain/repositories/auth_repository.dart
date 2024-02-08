@@ -14,4 +14,6 @@ abstract class AuthRepository {
     required String email,
     required String password,
   });
+
+  ResultFuture<void> saveToken({required String token});
 }
