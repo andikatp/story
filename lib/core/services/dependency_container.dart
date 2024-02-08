@@ -11,8 +11,9 @@ import 'package:story/features/auth/domain/usecases/login.dart';
 import 'package:story/features/auth/domain/usecases/register.dart';
 import 'package:story/features/auth/domain/usecases/save_token.dart';
 import 'package:story/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:story/features/splash_screen/data/datasources/splash_screen_local_datasource.dart';
-import 'package:story/features/splash_screen/data/repositories/splash_screen_repository_impl.dart';
+import 'package:story/features/splash_screen/data/datasources/splash_local_datasource.dart';
+import 'package:story/features/splash_screen/data/repositories/splash_repository_impl.dart';
+import 'package:story/features/splash_screen/domain/repositories/splash_repository.dart';
 import 'package:story/features/splash_screen/domain/usecases/check_user_logged_in.dart';
 import 'package:story/features/splash_screen/presentation/cubit/splash_cubit.dart';
 

@@ -2,15 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:story/core/errors/exceptions.dart';
 import 'package:story/core/errors/failures.dart';
 import 'package:story/core/utils/typedef.dart';
-import 'package:story/features/splash_screen/data/datasources/splash_screen_local_datasource.dart';
-import 'package:story/features/splash_screen/domain/repositories/splash_screen_repository.dart';
+import 'package:story/features/splash_screen/data/datasources/splash_local_datasource.dart';
+import 'package:story/features/splash_screen/domain/repositories/splash_repository.dart';
 
-class SplashScreenRepositoryImpl implements SplashScreenRepository {
-  SplashScreenRepositoryImpl({
-    required SplashScreenLocalDataSource localDataSource,
+class SplashRepositoryImpl implements SplashRepository {
+  SplashRepositoryImpl({
+    required SplashLocalDataSource localDataSource,
   }) : _localDataSource = localDataSource;
 
-  final SplashScreenLocalDataSource _localDataSource;
+  final SplashLocalDataSource _localDataSource;
 
   @override
   ResultFuture<bool> checkUserLoggedIn() async {
