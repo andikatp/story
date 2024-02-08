@@ -4,6 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:story/core/errors/exceptions.dart';
 import 'package:story/core/errors/failures.dart';
 import 'package:story/core/services/network_info.dart';
+import 'package:story/features/auth/data/datasource/auth_local_datasource.dart';
 import 'package:story/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:story/features/auth/data/model/user_model.dart';
 import 'package:story/features/auth/data/repositories/auth_repository_impl.dart';
@@ -13,19 +14,25 @@ import 'package:story/features/auth/domain/usecases/register.dart';
 class MockAuthRemoteDataSourceImpl extends Mock
     implements AuthRemoteDataSourceImpl {}
 
+class MockAuthLocalDataSourceImpl extends Mock
+    implements AuthLocalDataSourceImpl {}
+
 class MockNetworkInfoImpl extends Mock implements NetworkInfoImpl {}
 
 void main() {
   late AuthRemoteDataSource mockRemoteDataSource;
+  late AuthLocalDataSource mockLocalDataSource;
   late NetworkInfoImpl mockNetworkInfo;
   late AuthRepositoryImpl repository;
 
   setUp(() {
     mockRemoteDataSource = MockAuthRemoteDataSourceImpl();
+    mockLocalDataSource = MockAuthLocalDataSourceImpl();
     mockNetworkInfo = MockNetworkInfoImpl();
     repository = AuthRepositoryImpl(
       remoteDataSource: mockRemoteDataSource,
       networkInfo: mockNetworkInfo,
+      localDataSource: mockLocalDataSource,
     );
   });
 
@@ -112,7 +119,7 @@ void main() {
       });
     });
 
-    group('login', () {
+    group('Login', () {
       const tLoginParams = LoginParams.empty();
       const tUser = UserModel.empty();
       test(
@@ -164,6 +171,46 @@ void main() {
             ),
           ),
         );
+      });
+    });
+
+    group('SaveToken', () {
+      const fToken = 'token_test';
+      const tException = CacheException(message: 'message');
+      test(
+          'Should call [MockAuthLocalDataSourceImpl.saveToken] '
+          'and return a valid response', () async {
+        // arrange
+        when(() => mockLocalDataSource.saveToken(fToken))
+            .thenAnswer((_) => Future.value());
+        // act
+        final result = await repository.saveToken(token: fToken);
+        // assert
+        expect(result, equals(const Right<dynamic, void>(null)));
+        verify(() => mockLocalDataSource.saveToken(fToken));
+        verifyNoMoreInteractions(mockLocalDataSource);
+        verifyZeroInteractions(mockRemoteDataSource);
+      });
+
+      test(
+          'Should call [MockAuthLocalDataSourceImpl.saveToken] '
+          'and return a Cache Failure when failed', () async {
+        // arrange
+        when(() => mockLocalDataSource.saveToken(fToken)).thenThrow(tException);
+        // act
+        final result = await repository.saveToken(token: fToken);
+        // assert
+        expect(
+          result,
+          equals(
+            Left<Failure, dynamic>(
+              CacheFailure.fromException(tException),
+            ),
+          ),
+        );
+        verify(() => mockLocalDataSource.saveToken(fToken));
+        verifyNoMoreInteractions(mockLocalDataSource);
+        verifyZeroInteractions(mockRemoteDataSource);
       });
     });
   });
