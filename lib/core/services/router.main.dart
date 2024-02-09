@@ -5,6 +5,7 @@ final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 final router = GoRouter(
   navigatorKey: _navigatorKey,
   debugLogDiagnostics: true,
+  initialLocation: '/login',
   routerNeglect: true,
   routes: [
     GoRoute(
