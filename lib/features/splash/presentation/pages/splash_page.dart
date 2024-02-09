@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/res/colours.dart';
 import 'package:story/core/services/router.dart';
-import 'package:story/features/splash_screen/presentation/cubit/splash_cubit.dart';
+import 'package:story/features/splash/presentation/cubit/splash_cubit.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});

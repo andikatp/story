@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:story/core/errors/exceptions.dart';
 import 'package:story/core/errors/failures.dart';
 import 'package:story/core/utils/typedef.dart';
-import 'package:story/features/splash_screen/data/datasources/splash_local_datasource.dart';
-import 'package:story/features/splash_screen/domain/repositories/splash_repository.dart';
+import 'package:story/features/splash/data/datasources/splash_local_datasource.dart';
+import 'package:story/features/splash/domain/repositories/splash_repository.dart';
 
 class SplashRepositoryImpl implements SplashRepository {
   SplashRepositoryImpl({
