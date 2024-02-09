@@ -93,7 +93,8 @@ void main() {
 
   group('login', () {
     const tLoginParams = LoginParams.empty();
-    test('Should ', () async {
+    test('Should complete successfully when no [Exception] is thrown',
+        () async {
       // arrange
       when(
         () => mockHttpClient.post(

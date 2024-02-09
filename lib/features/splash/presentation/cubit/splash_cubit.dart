@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:story/features/splash_screen/domain/usecases/check_user_logged_in.dart';
+import 'package:story/features/splash/domain/usecases/check_user_logged_in.dart';
 
 part 'splash_state.dart';
 
