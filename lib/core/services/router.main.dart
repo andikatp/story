@@ -5,7 +5,7 @@ final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 final router = GoRouter(
   navigatorKey: _navigatorKey,
   debugLogDiagnostics: true,
-  initialLocation: '/login',
+  initialLocation: '/auth',
   routerNeglect: true,
   routes: [
     GoRoute(
@@ -17,11 +17,11 @@ final router = GoRouter(
       ),
     ),
     GoRoute(
-      path: '/login',
-      name: Routes.login.name,
+      path: '/auth',
+      name: Routes.auth.name,
       builder: (context, state) => BlocProvider(
         create: (context) => sl<AuthBloc>(),
-        child: const LoginPage(),
+        child: const AuthPage(),
       ),
     ),
     GoRoute(
