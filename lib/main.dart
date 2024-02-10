@@ -21,13 +21,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(412, 732),
-      minTextAdapt: true,
-      builder: (_, __) => MaterialApp.router(
-        routerConfig: router,
-        theme: AppTheme.currentTheme,
-        debugShowCheckedModeBanner: false,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: ScreenUtilInit(
+        designSize: const Size(412, 732),
+        minTextAdapt: true,
+        builder: (_, __) => MaterialApp.router(
+          routerConfig: router,
+          theme: AppTheme.currentTheme,
+          debugShowCheckedModeBanner: false,
+        ),
       ),
     );
   }
