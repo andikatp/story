@@ -44,10 +44,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     final url = Uri.parse('${AppConstant.baseUrl}${ApiEndpoint.login}');
     final response = await _client.post(
       url,
-      body: jsonEncode({
+      body: {
         'email': email,
         'password': password,
-      }),
+      },
     );
     final decode = jsonDecode(response.body) as ResultMap;
     if (response.statusCode != AppConstant.successfulHttpPostStatusCode) {
@@ -65,11 +65,11 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     final url = Uri.parse('${AppConstant.baseUrl}${ApiEndpoint.register}');
     final response = await _client.post(
       url,
-      body: jsonEncode({
+      body: {
         'name': name,
         'email': email,
         'password': password,
-      }),
+      },
     );
     final decode = jsonDecode(response.body) as ResultMap;
     if (response.statusCode != AppConstant.successfulHttpPostStatusCode) {
