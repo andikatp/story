@@ -48,6 +48,6 @@ class Gap {
   static final h16 = SizedBox(height: Sizes.p16.h);
   static final h20 = SizedBox(height: Sizes.p20.h);
   static final h24 = SizedBox(height: Sizes.p24.h);
+  static final h28 = SizedBox(height: Sizes.p28.h);
   static final h60 = SizedBox(height: Sizes.p60.h);
-
 }
