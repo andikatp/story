@@ -36,6 +36,7 @@ class GeneralInputField extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(const Radius.circular(12).r),
             ),
+            hintText: label,
             prefixIcon: Icon(icon),
           ),
           validator: validator,
@@ -99,6 +100,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
               borderRadius: BorderRadius.all(const Radius.circular(12).r),
             ),
             prefixIcon: const Icon(Icons.key_rounded),
+            hintText: 'Password',
             suffixIcon: IconButton(
               onPressed: showPasswordHandler,
               icon: Icon(

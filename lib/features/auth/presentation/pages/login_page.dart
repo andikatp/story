@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:story/core/common/widgets/back_button.dart';
 import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/services/router.dart';
 import 'package:story/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:story/features/auth/presentation/widgets/back_button_widget.dart';
 import 'package:story/features/auth/presentation/widgets/input_field.dart';
 
 class LoginPage extends StatelessWidget {

@@ -30,7 +30,7 @@ class AuthPage extends StatelessWidget {
                 ),
                 Gap.h60,
                 SvgPicture.asset(
-                  'assets/svg/2.svg',
+                  'assets/svg/astronout.svg',
                   width: 170,
                 ),
               ],

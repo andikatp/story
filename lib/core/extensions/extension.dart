@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 extension UIThemeExtension on BuildContext {
+  // Message
+  ScaffoldMessengerState get messengger => ScaffoldMessenger.of(this);
+
+  // TextTheme
   TextStyle get displayLarge => Theme.of(this).textTheme.displayLarge!;
   TextStyle get displayMedium => Theme.of(this).textTheme.displayMedium!;
   TextStyle get displaySmall => Theme.of(this).textTheme.displaySmall!;

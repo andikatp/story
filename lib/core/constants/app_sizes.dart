@@ -2,6 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Sizes {
+  Sizes._();
+
   static const p4 = 4.0;
   static const p8 = 8.0;
   static const p12 = 12.0;
@@ -12,6 +14,7 @@ class Sizes {
   static const p32 = 32.0;
   static const p36 = 36.0;
   static const p40 = 40.0;
+  static const p44 = 44.0;
   static const p48 = 48.0;
   static const p56 = 56.0;
   static const p60 = 60.0;
@@ -34,6 +37,7 @@ class Sizes {
 }
 
 class Gap {
+  Gap._();
   // width
   static final w8 = SizedBox(width: Sizes.p8.w);
   static final w12 = SizedBox(width: Sizes.p12.w);
