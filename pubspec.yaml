@@ -36,7 +36,7 @@ flutter:
 
   assets:
     - assets/
-    - assets/svg/
+    - assets/svg/astronout.svg
 
   fonts:
     - family: Roboto

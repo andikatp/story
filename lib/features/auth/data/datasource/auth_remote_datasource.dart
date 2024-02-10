@@ -50,7 +50,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       },
     );
     final decode = jsonDecode(response.body) as ResultMap;
-    if (response.statusCode != AppConstant.successfulHttpPostStatusCode) {
+    if (response.statusCode != AppConstant.successfulHttpGetStatusCode) {
       throw ServerException(message: decode['message'] as String);
     }
     return UserModel.fromJson(decode['loginResult'] as ResultMap);

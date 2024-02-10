@@ -19,19 +19,30 @@ class SplashPage extends StatelessWidget {
       if (state is SplashUserChecked && state.isUserLoggedIn) {
         await context.pushNamed(Routes.dashboard.name);
       } else {
-        await context.pushNamed(Routes.login.name);
+        await context.pushNamed(Routes.auth.name);
       }
     });
 
     return Scaffold(
       backgroundColor: Colours.secondaryColor,
-      body: Center(
-        child: Text(
-          'StarOwl',
-          style: context.headlineSmall.copyWith(
-            fontWeight: FontWeight.w900,
-          ),
-        ),
+      body: BlocConsumer<SplashCubit, SplashState>(
+        listener: (context, state) {
+          if (state is SplashUserChecked) {
+            state.isUserLoggedIn
+                ? context.goNamed(Routes.dashboard.name)
+                : context.goNamed(Routes.login.name);
+          }
+        },
+        builder: (context, state) {
+          return Center(
+            child: Text(
+              'StarOwl',
+              style: context.headlineSmall.copyWith(
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          );
+        },
       ),
     );
   }

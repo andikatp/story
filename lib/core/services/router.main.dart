@@ -5,16 +5,13 @@ final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 final router = GoRouter(
   navigatorKey: _navigatorKey,
   debugLogDiagnostics: true,
-  initialLocation: '/auth',
+  initialLocation: '/',
   routerNeglect: true,
   routes: [
     GoRoute(
       path: '/',
       name: Routes.splash.name,
-      builder: (context, state) => BlocProvider(
-        create: (context) => sl<SplashCubit>(),
-        child: const SplashPage(),
-      ),
+      builder: (_, state) => const SplashPage(),
     ),
     GoRoute(
       path: '/auth',

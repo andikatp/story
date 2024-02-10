@@ -56,5 +56,6 @@ Future<void> _initAuth() async {
     )
     ..registerLazySingleton(InternetConnection.new)
     ..registerLazySingleton(http.Client.new)
-    ..registerSingletonAsync(SharedPreferences.getInstance);
+    ..registerLazySingletonAsync(SharedPreferences.getInstance);
+    await GetIt.instance.isReady<SharedPreferences>();
 }
