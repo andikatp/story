@@ -39,7 +39,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ),
     );
     result.fold(
-      (failure) => emit(AuthError(message: failure.errorMessage)),
+      (failure) => emit(AuthError(message: failure.message)),
       (_) => emit(const Registered()),
     );
   }
@@ -55,7 +55,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ),
     );
     result.fold(
-      (failure) => emit(AuthError(message: failure.errorMessage)),
+      (failure) => emit(AuthError(message: failure.message)),
       (user) => emit(LoggedIn(user: user)),
     );
   }
@@ -66,7 +66,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     final result = await _saveToken(event.token);
     result.fold(
-      (failure) => emit(AuthError(message: failure.errorMessage)),
+      (failure) => emit(AuthError(message: failure.message)),
       (_) => emit(const TokenSaved()),
     );
   }

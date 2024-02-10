@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,64 +58,66 @@ class LoginPage extends StatelessWidget {
             key: formKey,
             child: SizedBox(
               height: 0.79.sh,
-              child: Column(
-                children: [
-                  GeneralInputField(
-                    type: TextInputType.emailAddress,
-                    controller: emailController,
-                    label: 'E-mail',
-                    icon: Icons.mail_outlined,
-                    validator: emailValidator,
-                  ),
-                  Gap.h20,
-                  PasswordInputField(controller: passwordController),
-                  Gap.h28,
-                  ElevatedButton(
-                    onPressed: loginHandler,
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(70),
-                    ),
-                    child: const Text('Login'),
-                  ),
-                  Gap.h20,
-                  BlocConsumer<AuthBloc, AuthState>(
-                    listener: (context, state) {
-                      if (state is LoggedIn) {
-                        context
-                            .read<AuthBloc>()
-                            .add(SaveTokenEvent(token: state.user.token));
-                      }
-                    },
-                    builder: (context, state) {
-                      if (state is AuthError) {
-                        return Text(
-                          'Wrong Password',
-                          style: context.bodySmall
-                              .copyWith(fontSize: 14.sp, color: Colors.red),
-                        );
-                      }
-                      return const SizedBox();
-                    },
-                  ),
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+              child: BlocConsumer<AuthBloc, AuthState>(
+                listener: (context, state) {
+                  if (state is LoggedIn) {
+                    context
+                        .read<AuthBloc>()
+                        .add(SaveTokenEvent(token: state.user.token));
+                  }
+                },
+                builder: (context, state) {
+                  return Column(
                     children: [
-                      Text(
-                        "Don't have an account yet?",
-                        style: context.bodySmall.copyWith(fontSize: 14.sp),
+                      GeneralInputField(
+                        type: TextInputType.emailAddress,
+                        controller: emailController,
+                        label: 'E-mail',
+                        icon: Icons.mail_outlined,
+                        validator: emailValidator,
                       ),
-                      TextButton(
-                        onPressed: goToRegister,
-                        child: Text(
-                          'Register',
+                      Gap.h20,
+                      PasswordInputField(controller: passwordController),
+                      Gap.h28,
+                      ElevatedButton(
+                        onPressed: state is AuthLoading ? null : loginHandler,
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(70),
+                        ),
+                        child: state is AuthLoading
+                            ? const CupertinoActivityIndicator()
+                            : const Text('Login'),
+                      ),
+                      Gap.h20,
+                      if (state is AuthError)
+                        Text(
+                          state.message,
                           style: context.bodySmall
                               .copyWith(fontSize: 14.sp, color: Colors.red),
                         ),
+                      const Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't have an account yet?",
+                            style: context.bodySmall.copyWith(fontSize: 14.sp),
+                          ),
+                          TextButton(
+                            onPressed: goToRegister,
+                            child: Text(
+                              'Register',
+                              style: context.bodySmall.copyWith(
+                                fontSize: 14.sp,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ),
