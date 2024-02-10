@@ -34,6 +34,7 @@ class LoginPage extends StatelessWidget {
     void goToRegister() => context.pushNamed(Routes.register.name);
 
     void loginHandler() {
+      FocusManager.instance.primaryFocus?.unfocus();
       if (formKey.currentState!.validate()) {
         final email = emailController.text.trim();
         final password = passwordController.text.trim();
@@ -64,6 +65,7 @@ class LoginPage extends StatelessWidget {
                     context
                         .read<AuthBloc>()
                         .add(SaveTokenEvent(token: state.user.token));
+                    context.goNamed(Routes.dashboard.name);
                   }
                 },
                 builder: (context, state) {

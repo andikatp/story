@@ -44,6 +44,7 @@ class RegisterPage extends StatelessWidget {
     }
 
     void registerHandler() {
+      FocusManager.instance.primaryFocus?.unfocus();
       if (formKey.currentState!.validate()) {
         final name = nameController.text.trim();
         final email = emailController.text.trim();
