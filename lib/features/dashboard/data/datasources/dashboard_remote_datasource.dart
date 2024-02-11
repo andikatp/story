@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:story/core/constants/api_endpoint.dart';
 import 'package:story/core/constants/app_constant.dart';
 import 'package:story/core/errors/exceptions.dart';
@@ -14,21 +15,31 @@ abstract class DashboardRemoteDataSource {
 }
 
 class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
-  DashboardRemoteDataSourceImpl({required http.Client client})
-      : _client = client;
+  DashboardRemoteDataSourceImpl(
+    this._sharedPreferences, {
+    required http.Client client,
+  }) : _client = client;
 
   final http.Client _client;
+  final SharedPreferences _sharedPreferences;
 
   @override
   Future<List<StoryModel>> getStories() async {
     final url = Uri.parse('${AppConstant.baseUrl}${ApiEndpoint.stories}');
-    final response = await _client.get(url);
+    final token = await getToken();
+    final response =
+        await _client.get(url, headers: {'Authorization': 'Bearer $token'});
     final decode = jsonDecode(response.body) as ResultMap;
 
     if (response.statusCode != 200) {
       throw ServerException(message: decode['message'] as String);
     }
+
     final listStory = decode['listStory'] as List<ResultMap>;
     return listStory.map(StoryModel.fromJson).toList();
+  }
+
+  Future<String> getToken() async {
+    return _sharedPreferences.getString(AppConstant.tokenKey) ?? '';
   }
 }
