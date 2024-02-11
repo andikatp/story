@@ -15,10 +15,11 @@ abstract class DashboardRemoteDataSource {
 }
 
 class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
-  DashboardRemoteDataSourceImpl(
-    this._sharedPreferences, {
+  DashboardRemoteDataSourceImpl({
+    required SharedPreferences sharedPreferences,
     required http.Client client,
-  }) : _client = client;
+  })  : _client = client,
+        _sharedPreferences = sharedPreferences;
 
   final http.Client _client;
   final SharedPreferences _sharedPreferences;

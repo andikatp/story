@@ -53,7 +53,11 @@ final router = GoRouter(
     GoRoute(
       path: '/dashboard',
       name: Routes.dashboard.name,
-      builder: (context, state) => const DashboardPage(),
+      builder: (context, state) => BlocProvider(
+        create: (context) =>
+            sl<DashboardBloc>()..add(const DashboardGetStories()),
+        child: const DashboardPage(),
+      ),
     ),
     // StatefulShellRoute.indexedStack(
     //   builder: (context, _, navigationShell) => DashboardPage(
