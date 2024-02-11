@@ -35,9 +35,10 @@ class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
     if (response.statusCode != 200) {
       throw ServerException(message: decode['message'] as String);
     }
-
-    final listStory = decode['listStory'] as List<ResultMap>;
-    return listStory.map(StoryModel.fromJson).toList();
+    final listStory = decode['listStory'] as List<dynamic>;
+    return listStory
+        .map((story) => StoryModel.fromJson(story as ResultMap))
+        .toList();
   }
 
   Future<String> getToken() async {

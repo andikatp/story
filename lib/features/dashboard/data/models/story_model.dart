@@ -21,8 +21,8 @@ class StoryModel extends StoryEntity {
       description: json['description'] as String,
       photoUrl: json['photoUrl'] as String,
       createdAt: json['createdAt'] as String,
-      lat: json['lat'] as double,
-      lon: json['lon'] as double,
+      lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
+      lon: json['lon'] != null ? (json['lon'] as num).toDouble() : null,
     );
   }
 

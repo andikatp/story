@@ -27,8 +27,8 @@ class StoryEntity extends Equatable {
   final String description;
   final String photoUrl;
   final String createdAt;
-  final double lat;
-  final double lon;
+  final double? lat;
+  final double? lon;
 
   @override
   List<String?> get props => [id];
