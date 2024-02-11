@@ -46,11 +46,6 @@ final router = GoRouter(
       ],
     ),
     GoRoute(
-      path: '/home',
-      name: Routes.home.name,
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
       path: '/dashboard',
       name: Routes.dashboard.name,
       builder: (context, state) => BlocProvider(
@@ -59,6 +54,12 @@ final router = GoRouter(
         child: const DashboardPage(),
       ),
     ),
+    GoRoute(
+      path: '/home',
+      name: Routes.home.name,
+      builder: (context, state) => const HomePage(),
+    ),
+
     // StatefulShellRoute.indexedStack(
     //   builder: (context, _, navigationShell) => DashboardPage(
     //     navigationShell: navigationShell,

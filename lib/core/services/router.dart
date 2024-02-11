@@ -7,6 +7,7 @@ import 'package:story/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:story/features/auth/presentation/pages/auth_page.dart';
 import 'package:story/features/auth/presentation/pages/login_page.dart';
 import 'package:story/features/auth/presentation/pages/register_page.dart';
+import 'package:story/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:story/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:story/features/splash/presentation/pages/splash_page.dart';
 
