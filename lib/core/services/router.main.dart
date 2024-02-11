@@ -5,7 +5,7 @@ final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 final router = GoRouter(
   navigatorKey: _navigatorKey,
   debugLogDiagnostics: true,
-  initialLocation: '/',
+  initialLocation: '/dashboard',
   routerNeglect: true,
   routes: [
     GoRoute(
@@ -45,7 +45,11 @@ final router = GoRouter(
         ),
       ],
     ),
-
+    GoRoute(
+      path: '/home',
+      name: Routes.home.name,
+      builder: (context, state) => const HomePage(),
+    ),
     GoRoute(
       path: '/dashboard',
       name: Routes.dashboard.name,
