@@ -26,10 +26,13 @@ class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
 
   @override
   Future<List<StoryModel>> getStories() async {
-    final url = Uri.parse('${AppConstant.baseUrl}${ApiEndpoint.stories}');
+    final url =
+        Uri.parse('${AppConstant.baseUrl}${ApiEndpoint.stories}?size=20');
     final token = await getToken();
-    final response =
-        await _client.get(url, headers: {'Authorization': 'Bearer $token'});
+    final response = await _client.get(
+      url,
+      headers: {'Authorization': 'Bearer $token'},
+    );
     final decode = jsonDecode(response.body) as ResultMap;
 
     if (response.statusCode != 200) {
