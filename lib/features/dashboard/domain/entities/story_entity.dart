@@ -11,6 +11,17 @@ class StoryEntity extends Equatable {
     required this.lon,
   });
 
+  const StoryEntity.empty()
+      : this(
+          id: '',
+          name: '',
+          description: '',
+          photoUrl: '',
+          createdAt: '',
+          lat: 0,
+          lon: 0,
+        );
+
   final String id;
   final String name;
   final String description;
