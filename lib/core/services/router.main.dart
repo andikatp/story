@@ -5,7 +5,7 @@ final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 final router = GoRouter(
   navigatorKey: _navigatorKey,
   debugLogDiagnostics: true,
-  initialLocation: '/profile',
+  initialLocation: '/',
   routerNeglect: true,
   routes: [
     GoRoute(
@@ -45,45 +45,38 @@ final router = GoRouter(
         ),
       ],
     ),
-    GoRoute(
-      path: '/dashboard',
-      name: Routes.dashboard.name,
-      builder: (context, state) => BlocProvider(
-        create: (context) =>
-            sl<DashboardBloc>()..add(const DashboardGetStories(page: 1)),
-        child: const DashboardPage(),
+    StatefulShellRoute.indexedStack(
+      builder: (context, _, navigationShell) => HomePage(
+        navigationShell: navigationShell,
       ),
+      branches: [
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/dashboard',
+              name: Routes.dashboard.name,
+              builder: (context, state) => BlocProvider(
+                create: (context) => sl<DashboardBloc>()
+                  ..add(const DashboardGetStories(page: 1)),
+                child: const DashboardPage(),
+              ),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/profile',
+              name: Routes.profile.name,
+              builder: (_, state) => BlocProvider(
+                create: (context) => sl<ProfileCubit>(),
+                child: const ProfilePage(),
+              ),
+            ),
+          ],
+        ),
+      ],
     ),
-    GoRoute(
-      path: '/home',
-      name: Routes.home.name,
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      path: '/profile',
-      name: Routes.profile.name,
-      builder: (_, state) => BlocProvider(
-        create: (context) => sl<ProfileCubit>(),
-        child: const ProfilePage(),
-      ),
-    ),
-
-    // StatefulShellRoute.indexedStack(
-    //   builder: (context, _, navigationShell) => DashboardPage(
-    //     navigationShell: navigationShell,
-    //   ),
-    //   branches: [
-    //     StatefulShellBranch(
-    //       routes: [
-    //         GoRoute(
-    //           path: '/home',
-    //           name: Routes.home.name,
-    //           builder: (context, _) => const MainPage(),
-    //         ),
-    //       ],
-    //     ),
-    //   ],
-    // ),
   ],
 );
 

@@ -1,38 +1,37 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:story/core/res/colours.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({required this.navigationShell, Key? key})
+      : super(key: key ?? const ValueKey('ScaffoldWithNestedNavigation'));
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _bottomNavIndex = 0;
-
-  final List<IconData> _icons = [
-    Icons.home,
-    Icons.person,
-  ];
+  final StatefulNavigationShell navigationShell;
 
   @override
   Widget build(BuildContext context) {
+    void goBranch(int index) {
+      navigationShell.goBranch(
+        index,
+        initialLocation: index == navigationShell.currentIndex,
+      );
+    }
+
     return Scaffold(
-      body: const Center(
-        child: Text('data'),
-      ),
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        icons: _icons,
-        backgroundColor: Colours.whiteColor,
-        inactiveColor: Colours.backgroundColor,
-        activeColor: Colours.primaryColor,
-        activeIndex: _bottomNavIndex,
-        leftCornerRadius: 32,
-        rightCornerRadius: 32,
-        gapLocation: GapLocation.center,
-        onTap: (index) => setState(() => _bottomNavIndex = index),
+      body: navigationShell,
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colours.backgroundColor,
+
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+        selectedIndex: navigationShell.currentIndex,
+        elevation: 2,
+        height: 0.08.sh,
+        onDestinationSelected: goBranch,
+        destinations: const [
+          NavigationDestination(icon: Icon(Icons.home), label: ''),
+          NavigationDestination(icon: Icon(Icons.person), label: ''),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
