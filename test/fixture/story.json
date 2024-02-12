@@ -1,0 +1,15 @@
+{
+    "error": false,
+    "message": "Stories fetched successfully",
+    "listStory": [
+        {
+            "id": "1",
+            "name": "",
+            "description": "",
+            "photoUrl": "",
+            "createdAt": "",
+            "lat": 0.0,
+            "lon": 0.0
+        }
+    ]
+}

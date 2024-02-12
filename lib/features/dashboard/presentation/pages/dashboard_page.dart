@@ -77,7 +77,11 @@ class Tile extends StatelessWidget {
       borderRadius: BorderRadius.circular(16).r,
       child: GestureDetector(
         onLongPress: () {},
-        onTap: () async {},
+        onTap: () async {
+          const SimpleDialog(
+            children: [Text('data')],
+          );
+        },
         child: CachedNetworkImage(
           key: key,
           imageUrl: story.photoUrl,
