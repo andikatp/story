@@ -13,7 +13,7 @@ class StoryEntity extends Equatable {
 
   const StoryEntity.empty()
       : this(
-          id: '',
+          id: '1',
           name: '',
           description: '',
           photoUrl: '',
