@@ -24,26 +24,27 @@ void main() {
         'Should call [DashboardRepository.getStories] '
         'and return [List<StoryEntity>]', () async {
       // arrange
-      when(() => mockRepository.getStories())
+      when(() => mockRepository.getStories(page: any(named: 'page')))
           .thenAnswer((_) async => Right(tStories));
       // act
-      final result = await usecase();
+      final result = await usecase(1);
       // assert
       expect(result, Right<dynamic, List<StoryEntity>>(tStories));
-      verify(() => mockRepository.getStories()).called(1);
+      verify(() => mockRepository.getStories(page: 1)).called(1);
       verifyNoMoreInteractions(mockRepository);
     });
 
-    test('Should call [DashboardRepository.getStories] '
+    test(
+        'Should call [DashboardRepository.getStories] '
         'and return [ServerFailure]', () async {
       // arrange
-      when(() => mockRepository.getStories())
+      when(() => mockRepository.getStories(page: any(named: 'page')))
           .thenAnswer((_) async => const Left(tFailure));
       // act
-      final result = await usecase();
+      final result = await usecase(1);
       // assert
       expect(result, const Left<Failure, dynamic>(tFailure));
-      verify(() => mockRepository.getStories()).called(1);
+      verify(() => mockRepository.getStories(page: 1)).called(1);
       verifyNoMoreInteractions(mockRepository);
     });
   });

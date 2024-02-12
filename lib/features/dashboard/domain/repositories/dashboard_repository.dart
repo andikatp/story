@@ -4,5 +4,5 @@ import 'package:story/features/dashboard/domain/entities/story_entity.dart';
 abstract class DashboardRepository {
   const DashboardRepository();
 
-  ResultFuture<List<StoryEntity>> getStories();
+  ResultFuture<List<StoryEntity>> getStories({required int page});
 }

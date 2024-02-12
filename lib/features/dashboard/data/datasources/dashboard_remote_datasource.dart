@@ -11,7 +11,7 @@ import 'package:story/features/dashboard/data/models/story_model.dart';
 abstract class DashboardRemoteDataSource {
   const DashboardRemoteDataSource();
 
-  Future<List<StoryModel>> getStories();
+  Future<List<StoryModel>> getStories({required int page});
 }
 
 class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
@@ -25,7 +25,7 @@ class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
   final SharedPreferences _sharedPreferences;
 
   @override
-  Future<List<StoryModel>> getStories() async {
+  Future<List<StoryModel>> getStories({required int page}) async {
     final url =
         Uri.parse('${AppConstant.baseUrl}${ApiEndpoint.stories}?size=20');
     final token = await getToken();
