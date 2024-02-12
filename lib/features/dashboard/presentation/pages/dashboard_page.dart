@@ -49,14 +49,17 @@ class _DashboardPageState extends State<DashboardPage> {
         builder: (context, state) {
           switch (state.status) {
             case StoryStatus.loading:
+            print('loading...');
               return const Center(
                 child: CupertinoActivityIndicator(),
               );
             case StoryStatus.error:
+            print('error...');
               return Center(
                 child: Text(state.errorMessage),
               );
             case StoryStatus.success:
+            print('success...');
               return GridView.custom(
                 controller: _scrollController,
                 padding: REdgeInsets.all(8),
