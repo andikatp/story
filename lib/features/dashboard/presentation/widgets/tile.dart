@@ -30,7 +30,7 @@ class Tile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: extent.h,
+                    height: 60.h,
                     padding: REdgeInsets.symmetric(horizontal: 20),
                     child: Wrap(
                       spacing: 4,
@@ -92,6 +92,7 @@ class Tile extends StatelessWidget {
         child: CachedNetworkImage(
           key: key,
           imageUrl: story.photoUrl,
+          height: extent.h,
           fit: BoxFit.cover,
           placeholder: (_, __) => const Center(
             child: CupertinoActivityIndicator(),

@@ -16,6 +16,11 @@ import 'package:story/features/dashboard/data/repositories/dashboard_repository_
 import 'package:story/features/dashboard/domain/repositories/dashboard_repository.dart';
 import 'package:story/features/dashboard/domain/usecases/get_stories.dart';
 import 'package:story/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:story/features/profile/data/data/profile_local_datasource.dart';
+import 'package:story/features/profile/data/repositories/profile_repository_impl.dart';
+import 'package:story/features/profile/domain/repositories/profile_repository.dart';
+import 'package:story/features/profile/domain/usecases/logout.dart';
+import 'package:story/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:story/features/splash/data/datasources/splash_local_datasource.dart';
 import 'package:story/features/splash/data/repositories/splash_repository_impl.dart';
 import 'package:story/features/splash/domain/repositories/splash_repository.dart';
