@@ -10,5 +10,5 @@ class GetStories implements UseCaseWithParams<List<StoryEntity>, int> {
 
   @override
   ResultFuture<List<StoryEntity>> call(int page) =>
-      _repository.getStories(page: 1);
+      _repository.getStories(page: page);
 }
