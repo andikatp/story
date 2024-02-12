@@ -6,6 +6,7 @@ Future<void> init() async {
   await _initSplash();
   await _initAuth();
   await _initDashboard();
+  await _initProfile();
 }
 
 Future<void> _initSplash() async {
@@ -82,5 +83,23 @@ Future<void> _initDashboard() async {
       () =>
           DashboardRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()),
     );
-    // other
+  // other
+}
+
+Future<void> _initProfile() async {
+  //feature --> Dashboard
+  //Business Logic
+  sl
+    ..registerFactory(() => ProfileCubit(logout: sl()))
+    // usecases
+    ..registerLazySingleton(() => Logout(repository: sl()))
+    // repositories
+    ..registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(localData: sl()),
+    )
+    // datasources
+    ..registerLazySingleton<ProfileLocalDataSource>(
+      () => ProfileLocalDataSourceImpl(preferences: sl()),
+    );
+  // other
 }

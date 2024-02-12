@@ -33,7 +33,7 @@ class _DashboardPageState extends State<DashboardPage> {
   void _loadMore() {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
-    if (currentScroll >= (maxScroll * 0.7)) {
+    if (currentScroll >= maxScroll) {
       setState(() => _currentPage++);
       context
           .read<DashboardBloc>()
