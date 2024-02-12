@@ -8,5 +8,9 @@ sealed class DashboardEvent extends Equatable {
 }
 
 class DashboardGetStories extends DashboardEvent {
-  const DashboardGetStories();
+  const DashboardGetStories({required this.page});
+  final int page;
+
+  @override
+  List<int> get props => [page];
 }

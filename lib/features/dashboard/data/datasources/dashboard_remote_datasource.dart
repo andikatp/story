@@ -26,8 +26,9 @@ class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
 
   @override
   Future<List<StoryModel>> getStories({required int page}) async {
-    final url =
-        Uri.parse('${AppConstant.baseUrl}${ApiEndpoint.stories}?size=20');
+    final url = Uri.parse(
+      '${AppConstant.baseUrl}${ApiEndpoint.stories}?page=$page&&size=20',
+    );
     final token = await getToken();
     final response = await _client.get(
       url,
