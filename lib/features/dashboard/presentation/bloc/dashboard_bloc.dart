@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:story/core/errors/error_message.dart';
 import 'package:story/features/dashboard/domain/entities/story_entity.dart';
 import 'package:story/features/dashboard/domain/usecases/get_stories.dart';
@@ -24,7 +24,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     DashboardGetStories event,
     Emitter<DashboardState> emit,
   ) async {
-    final result = await _getStories(1);
+    final result = await _getStories(event.page);
     result.fold(
       (failure) => emit(DashboardError(message: errorMessage(failure))),
       (stories) => emit(DashboardLoaded(stories: stories)),
