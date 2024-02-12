@@ -59,12 +59,22 @@ class Tile extends StatelessWidget {
                       child: CupertinoActivityIndicator(),
                     ),
                     errorWidget: (_, __, ___) => const Icon(Icons.error),
+                    cacheManager: CacheManager(
+                      Config(
+                        'story',
+                        stalePeriod: const Duration(minutes: 5),
+                      ),
+                    ),
                   ),
                   Container(
                     padding:
                         REdgeInsets.symmetric(horizontal: 20, vertical: 20),
                     alignment: Alignment.center,
-                    child: Text(story.description),
+                    child: Text(
+                      story.description,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ],
               ),
