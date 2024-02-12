@@ -24,7 +24,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     DashboardGetStories event,
     Emitter<DashboardState> emit,
   ) async {
-    final result = await _getStories();
+    final result = await _getStories(1);
     result.fold(
       (failure) => emit(DashboardError(message: errorMessage(failure))),
       (stories) => emit(DashboardLoaded(stories: stories)),

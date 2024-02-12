@@ -18,12 +18,12 @@ class DashboardRepositoryImpl implements DashboardRepository {
   final DashboardRemoteDataSource _dataSource;
 
   @override
-  ResultFuture<List<StoryEntity>> getStories() async {
+  ResultFuture<List<StoryEntity>> getStories({required int page}) async {
     try {
       if (!await _networkInfo.isConnected) {
         return const Left(InternetFailure());
       }
-      final result = await _dataSource.getStories();
+      final result = await _dataSource.getStories(page: page);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure.fromException(e));

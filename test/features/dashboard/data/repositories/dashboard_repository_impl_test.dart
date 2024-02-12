@@ -32,7 +32,7 @@ void main() {
     // arrange
     when(() => mockNetworkInfo.isConnected).thenAnswer((_) async => false);
     // act
-    await repository.getStories();
+    await repository.getStories(page: 1);
     // assert
     expect(false, await mockNetworkInfo.isConnected);
   });
@@ -50,13 +50,13 @@ void main() {
         'Should call [MockDashboardRemoteDataSourceImpl.getStories] '
         'and return a Right data', () async {
       // arrange
-      when(() => mockRemoteDataSource.getStories())
+      when(() => mockRemoteDataSource.getStories(page: any(named: 'page')))
           .thenAnswer((_) async => tList);
       // act
-      final result = await repository.getStories();
+      final result = await repository.getStories(page: 1);
       // assert
       expect(result, equals(Right<dynamic, List<StoryModel>>(tList)));
-      verify(() => mockRemoteDataSource.getStories()).called(1);
+      verify(() => mockRemoteDataSource.getStories(page: 1)).called(1);
       verifyNoMoreInteractions(mockRemoteDataSource);
     });
 
@@ -64,9 +64,10 @@ void main() {
         'Should call [MockDashboardRemoteDataSourceImpl.getStories] '
         'and return a Server Failure when failed', () async {
       // arrange
-      when(() => mockRemoteDataSource.getStories()).thenThrow(tException);
+      when(() => mockRemoteDataSource.getStories(page: any(named: 'page')))
+          .thenThrow(tException);
       // act
-      final result = await repository.getStories();
+      final result = await repository.getStories(page: 1);
       // assert
       expect(
         result,
@@ -74,7 +75,7 @@ void main() {
           Left<Failure, dynamic>(ServerFailure.fromException(tException)),
         ),
       );
-      verify(() => mockRemoteDataSource.getStories()).called(1);
+      verify(() => mockRemoteDataSource.getStories(page: 1)).called(1);
       verifyNoMoreInteractions(mockRemoteDataSource);
     });
   });
