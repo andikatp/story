@@ -32,27 +32,3 @@ class DashboardState extends Equatable {
   @override
   List<Object> get props => [status, stories, hasReachedMax, errorMessage];
 }
-
-// final class DashboardInitial extends DashboardState {
-//   const DashboardInitial();
-// }
-
-// final class DashboardLoading extends DashboardState {
-//   const DashboardLoading();
-// }
-
-// final class DashboardLoaded extends DashboardState {
-//   const DashboardLoaded({required this.stories});
-//   final List<StoryEntity> stories;
-
-//   @override
-//   List<Object> get props => [stories];
-// }
-
-// final class DashboardError extends DashboardState {
-//   const DashboardError({required this.message});
-//   final String message;
-
-//   @override
-//   List<Object> get props => [message];
-// }

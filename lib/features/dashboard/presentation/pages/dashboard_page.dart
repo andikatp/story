@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:story/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:story/features/dashboard/presentation/widgets/tile.dart';
@@ -34,7 +33,7 @@ class _DashboardPageState extends State<DashboardPage> {
   void _loadMore() {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
-    if (currentScroll >= (maxScroll * 0.9)) {
+    if (currentScroll >= (maxScroll * 0.7)) {
       setState(() => _currentPage++);
       context
           .read<DashboardBloc>()
@@ -57,26 +56,40 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: Text(state.errorMessage),
               );
             case StoryStatus.success:
-              return GridView.custom(
+              final stories = state.stories;
+              return MasonryGridView.count(
                 controller: _scrollController,
-                padding: REdgeInsets.all(8),
-                gridDelegate: SliverQuiltedGridDelegate(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
-                  repeatPattern: QuiltedGridRepeatPattern.inverted,
-                  pattern: [
-                    const QuiltedGridTile(2, 2),
-                    const QuiltedGridTile(1, 1),
-                    const QuiltedGridTile(1, 1),
-                    const QuiltedGridTile(1, 2),
-                  ],
-                ),
-                childrenDelegate: SliverChildBuilderDelegate(
-                  childCount: state.stories.length,
-                  (context, index) => Tile(story: state.stories[index]),
-                ),
+                crossAxisCount: 2,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+                itemCount: state.stories.length,
+                itemBuilder: (context, index) {
+                  return Tile(
+                    extent: (index % 5 + 1) * 100,
+                    story: stories[index],
+                  );
+                },
               );
+            // return GridView.custom(
+            //   controller: _scrollController,
+            //   padding: REdgeInsets.all(8),
+            //   gridDelegate: SliverQuiltedGridDelegate(
+            //     crossAxisCount: 4,
+            //     mainAxisSpacing: 8,
+            //     crossAxisSpacing: 8,
+            //     repeatPattern: QuiltedGridRepeatPattern.inverted,
+            //     pattern: [
+            //       const QuiltedGridTile(2, 2),
+            //       const QuiltedGridTile(1, 1),
+            //       const QuiltedGridTile(1, 1),
+            //       const QuiltedGridTile(1, 2),
+            //     ],
+            //   ),
+            //   childrenDelegate: SliverChildBuilderDelegate(
+            //     childCount: state.stories.length,
+            //     (context, index) => Tile(story: state.stories[index]),
+            //   ),
+            // );
           }
         },
       ),

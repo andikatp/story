@@ -10,8 +10,9 @@ import 'package:story/core/utils/time_utils.dart';
 import 'package:story/features/dashboard/domain/entities/story_entity.dart';
 
 class Tile extends StatelessWidget {
-  const Tile({required this.story, super.key});
+  const Tile({required this.story, required this.extent, super.key});
 
+  final int extent;
   final StoryEntity story;
 
   @override
@@ -29,7 +30,7 @@ class Tile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 60.h,
+                    height: extent.h,
                     padding: REdgeInsets.symmetric(horizontal: 20),
                     child: Wrap(
                       spacing: 4,
