@@ -8,7 +8,6 @@ environment:
   sdk: '>=3.2.3 <4.0.0'
 
 dependencies:
-  animated_bottom_navigation_bar: ^1.3.3
   animations: ^2.0.11
   bloc_concurrency: ^0.2.3
   bloc_test: ^9.1.5
