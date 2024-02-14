@@ -44,6 +44,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
           switch (state.status) {

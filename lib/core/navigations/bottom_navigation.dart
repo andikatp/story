@@ -1,5 +1,5 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:story/core/res/colours.dart';
 
@@ -20,18 +20,17 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: Colours.backgroundColor,
-
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        selectedIndex: navigationShell.currentIndex,
-        elevation: 2,
-        height: 0.08.sh,
-        onDestinationSelected: goBranch,
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: ''),
-          NavigationDestination(icon: Icon(Icons.person), label: ''),
-        ],
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+        icons: const [Icons.home, Icons.person],
+        elevation: 0,
+        inactiveColor: Colours.backgroundColor,
+        activeColor: Colours.primaryColor,
+        activeIndex: navigationShell.currentIndex,
+        leftCornerRadius: 28,
+        rightCornerRadius: 28,
+        notchSmoothness: NotchSmoothness.defaultEdge,
+        gapLocation: GapLocation.center,
+        onTap: goBranch,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
