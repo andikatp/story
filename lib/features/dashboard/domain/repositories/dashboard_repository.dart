@@ -10,5 +10,7 @@ abstract class DashboardRepository {
   ResultFuture<void> addStory({
     required XFile file,
     required String description,
+    double lat,
+    double lon,
   });
 }

@@ -9,13 +9,24 @@ class AddStory implements UseCaseWithParams<void, AddStoryParams> {
   final DashboardRepository _repository;
 
   @override
-  ResultFuture<void> call(AddStoryParams params) =>
-      _repository.addStory(file: params.file, description: params.description);
+  ResultFuture<void> call(AddStoryParams params) => _repository.addStory(
+        file: params.file,
+        description: params.description,
+        lat: params.lat,
+        lon: params.lon,
+      );
 }
 
 class AddStoryParams {
-  AddStoryParams({required this.file, required this.description});
+  AddStoryParams(
+    this.lat,
+    this.lon, {
+    required this.file,
+    required this.description,
+  });
 
   final XFile file;
   final String description;
+  final double lat;
+  final double lon;
 }
