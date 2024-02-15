@@ -16,10 +16,10 @@ class DashboardState extends Equatable {
   final String errorMessage;
 
   DashboardState copyWith({
-   StoryStatus? status,
-   List<StoryEntity>? stories,
-   bool? hasReachedMax,
-   String? errorMessage,
+    StoryStatus? status,
+    List<StoryEntity>? stories,
+    bool? hasReachedMax,
+    String? errorMessage,
   }) {
     return DashboardState(
       status: status ?? this.status,

@@ -26,5 +26,10 @@ import 'package:story/features/splash/data/repositories/splash_repository_impl.d
 import 'package:story/features/splash/domain/repositories/splash_repository.dart';
 import 'package:story/features/splash/domain/usecases/check_user_logged_in.dart';
 import 'package:story/features/splash/presentation/cubit/splash_cubit.dart';
+import 'package:story/features/story/data/datasources/story_remote_data_source.dart';
+import 'package:story/features/story/data/repositories/story_repository_impl.dart';
+import 'package:story/features/story/domain/repositories/story_repository.dart';
+import 'package:story/features/story/domain/usecases/add_story.dart';
+import 'package:story/features/story/presentation/bloc/story_bloc.dart';
 
 part 'dependency_container.main.dart';

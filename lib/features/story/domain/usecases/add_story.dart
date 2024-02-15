@@ -1,12 +1,12 @@
 import 'package:image_picker/image_picker.dart';
 import 'package:story/core/usecases/usecases.dart';
 import 'package:story/core/utils/typedef.dart';
-import 'package:story/features/dashboard/domain/repositories/dashboard_repository.dart';
+import 'package:story/features/story/domain/repositories/story_repository.dart';
 
 class AddStory implements UseCaseWithParams<void, AddStoryParams> {
-  AddStory({required DashboardRepository repository})
+  AddStory({required StoryRepository repository})
       : _repository = repository;
-  final DashboardRepository _repository;
+  final StoryRepository _repository;
 
   @override
   ResultFuture<void> call(AddStoryParams params) => _repository.addStory(
@@ -27,6 +27,6 @@ class AddStoryParams {
 
   final XFile file;
   final String description;
-  final double lat;
-  final double lon;
+  final double? lat;
+  final double? lon;
 }

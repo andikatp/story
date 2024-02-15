@@ -7,6 +7,7 @@ Future<void> init() async {
   await _initAuth();
   await _initDashboard();
   await _initProfile();
+  await _initStory();
 }
 
 Future<void> _initSplash() async {
@@ -100,6 +101,24 @@ Future<void> _initProfile() async {
     // datasources
     ..registerLazySingleton<ProfileLocalDataSource>(
       () => ProfileLocalDataSourceImpl(preferences: sl()),
+    );
+  // other
+}
+
+Future<void> _initStory() async {
+  //feature --> Dashboard
+  //Business Logic
+  sl
+    ..registerFactory(() => StoryBloc(addStory: sl()))
+    // usecases
+    ..registerLazySingleton(() => AddStory(repository: sl()))
+    // repositories
+    ..registerLazySingleton<StoryRepository>(
+      () => StoryRepositoryImpl(dataSource: sl(), networkInfo: sl()),
+    )
+    // datasources
+    ..registerLazySingleton<StoryRemoteDataSource>(
+      () => StoryRemoteDataSourceImpl(client: sl(), sharedPreferences: sl()),
     );
   // other
 }
