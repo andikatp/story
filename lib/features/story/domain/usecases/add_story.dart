@@ -4,8 +4,7 @@ import 'package:story/core/utils/typedef.dart';
 import 'package:story/features/story/domain/repositories/story_repository.dart';
 
 class AddStory implements UseCaseWithParams<void, AddStoryParams> {
-  AddStory({required StoryRepository repository})
-      : _repository = repository;
+  AddStory({required StoryRepository repository}) : _repository = repository;
   final StoryRepository _repository;
 
   @override
@@ -24,6 +23,8 @@ class AddStoryParams {
     required this.file,
     required this.description,
   });
+
+  AddStoryParams.empty() : this(null, null, file: XFile(''), description: '');
 
   final XFile file;
   final String description;
