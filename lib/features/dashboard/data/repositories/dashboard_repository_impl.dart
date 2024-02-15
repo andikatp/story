@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:story/core/errors/exceptions.dart';
 import 'package:story/core/errors/failures.dart';
 import 'package:story/core/services/network_info.dart';
@@ -24,6 +25,23 @@ class DashboardRepositoryImpl implements DashboardRepository {
         return const Left(InternetFailure());
       }
       final result = await _dataSource.getStories(page: page);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure.fromException(e));
+    }
+  }
+
+  @override
+  ResultFuture<void> addStory({
+    required XFile file,
+    required String description,
+  }) async {
+    try {
+      if (!await _networkInfo.isConnected) {
+        return const Left(InternetFailure());
+      }
+      final result =
+          await _dataSource.addStory(file: file, description: description);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure.fromException(e));

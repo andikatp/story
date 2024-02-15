@@ -11,17 +11,9 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void>.delayed(const Duration(seconds: 3)).then((_) async {
-      final bloc = context.read<SplashCubit>();
-      await bloc.checkUserLoggedIn();
-      final state = bloc.state;
-      if (!context.mounted) return;
-      if (state is SplashUserChecked && state.isUserLoggedIn) {
-        await context.pushNamed(Routes.dashboard.name);
-      } else {
-        await context.pushNamed(Routes.auth.name);
-      }
-    });
+    Future<void>.delayed(const Duration(seconds: 3)).then(
+      (_) async => context.read<SplashCubit>().checkUserLoggedIn(),
+    );
 
     return Scaffold(
       backgroundColor: Colours.secondaryColor,
@@ -30,7 +22,7 @@ class SplashPage extends StatelessWidget {
           if (state is SplashUserChecked) {
             state.isUserLoggedIn
                 ? context.goNamed(Routes.dashboard.name)
-                : context.goNamed(Routes.login.name);
+                : context.goNamed(Routes.auth.name);
           }
         },
         builder: (context, state) {
