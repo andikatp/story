@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/services/router.dart';
 import 'package:story/features/story/presentation/bloc/story_bloc.dart';
+import 'package:story/features/story/presentation/widgets/text_field_story.dart';
 
 class AddStory extends StatelessWidget {
   const AddStory({super.key});
@@ -77,42 +78,9 @@ class AddStory extends StatelessWidget {
                 iconSize: 44.sp,
               ),
             ),
-            Positioned(
-              bottom: 0,
-              child: Container(
-                color: Colors.black38,
-                width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                child: TextField(
-                  controller: descriptionController,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                  maxLines: 6,
-                  minLines: 1,
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Add Caption....',
-                    hintStyle: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: addStory,
-                      style: IconButton.styleFrom(
-                        backgroundColor: Colors.tealAccent[700],
-                      ),
-                      icon: const Icon(
-                        Icons.check,
-                        color: Colors.white,
-                        size: 27,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+            TextFieldStory(
+              descriptionController: descriptionController,
+              addStory: addStory,
             ),
           ],
         ),
