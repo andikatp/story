@@ -8,6 +8,7 @@ import 'package:story/features/auth/presentation/pages/auth_page.dart';
 import 'package:story/features/auth/presentation/pages/login_page.dart';
 import 'package:story/features/auth/presentation/pages/register_page.dart';
 import 'package:story/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:story/features/dashboard/presentation/pages/add_story.dart';
 import 'package:story/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:story/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:story/features/profile/presentation/pages/profile_page.dart';
@@ -23,4 +24,5 @@ enum Routes {
   home,
   dashboard,
   profile,
+  addStory,
 }
