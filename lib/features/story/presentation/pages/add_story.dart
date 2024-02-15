@@ -56,7 +56,7 @@ class AddStory extends StatelessWidget {
                 behavior: SnackBarBehavior.floating,
               ),
             );
-            context.goNamed(Routes.dashboard.name);
+            context.pushReplacementNamed(Routes.dashboard.name);
           }
         },
         child: Stack(

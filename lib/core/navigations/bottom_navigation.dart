@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget {
     ) async {
       final photo = await picker.pickImage(source: source);
       if (photo != null && context.mounted) {
+        context.pop();
         await context.pushNamed(
           Routes.addStory.name,
           extra: photo,
