@@ -80,7 +80,10 @@ final router = GoRouter(
     GoRoute(
       path: '/add-story',
       name: Routes.addStory.name,
-      builder: (context, state) => const AddStory(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => sl<StoryBloc>(),
+        child: const AddStory(),
+      ),
     ),
   ],
 );
