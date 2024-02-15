@@ -56,7 +56,7 @@ class PasswordInputField extends StatefulWidget {
 }
 
 class _PasswordInputFieldState extends State<PasswordInputField> {
-  bool isShowPassword = false;
+  bool isShowPassword = true;
 
   String? validator(String? value) {
     if (value == null || value.isEmpty) {

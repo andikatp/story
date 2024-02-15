@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:story/core/res/colours.dart';
+import 'package:whatsapp_camera/camera/camera_whatsapp.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({required this.navigationShell, Key? key})
@@ -33,7 +36,14 @@ class HomePage extends StatelessWidget {
         onTap: goBranch,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          final res = await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const WhatsappCamera(),
+            ),
+          );
+        },
         shape: const CircleBorder(),
         child: const Icon(Icons.add_a_photo),
       ),
