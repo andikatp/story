@@ -15,7 +15,12 @@ abstract class DashboardRemoteDataSource {
 
   Future<List<StoryModel>> getStories({required int page});
 
-  Future<void> addStory({required XFile file, required String description});
+  Future<void> addStory({
+    required XFile file,
+    required String description,
+    double lat,
+    double lon,
+  });
 }
 
 class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
@@ -53,6 +58,8 @@ class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
   Future<void> addStory({
     required XFile file,
     required String description,
+    double? lat,
+    double? lon,
   }) async {
     final url = Uri.parse(
       '${AppConstant.baseUrl}${ApiEndpoint.stories}',

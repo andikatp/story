@@ -35,6 +35,8 @@ class DashboardRepositoryImpl implements DashboardRepository {
   ResultFuture<void> addStory({
     required XFile file,
     required String description,
+    double? lat,
+    double? lon,
   }) async {
     try {
       if (!await _networkInfo.isConnected) {
