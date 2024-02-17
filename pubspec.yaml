@@ -15,6 +15,8 @@ dependencies:
   cached_network_image: ^3.3.1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
+  dropdown_button2: ^2.3.9
+  easy_localization: ^3.0.4
   equatable: ^2.0.5
   flutter:
     sdk: flutter
@@ -48,6 +50,9 @@ flutter:
   assets:
     - assets/
     - assets/svg/astronout.svg
+    - assets/svg/id.svg
+    - assets/svg/en.svg
+    - assets/translations/
 
   fonts:
     - family: Roboto
