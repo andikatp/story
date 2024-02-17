@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -74,14 +75,14 @@ class HomePage extends StatelessWidget {
               children: [
                 buildOption(
                   icon: Icons.camera,
-                  label: 'Camera',
+                  label: 'Camera'.tr(),
                   onTap: () async {
                     await handleImageSelection(ImageSource.camera, picker);
                   },
                 ),
                 buildOption(
                   icon: Icons.image,
-                  label: 'Gallery',
+                  label: 'Gallery'.tr(),
                   onTap: () async {
                     await handleImageSelection(ImageSource.gallery, picker);
                   },

@@ -5,8 +5,8 @@
   "Login": "Masuk",
   "LoginToRegister": "Masih belum punya akun?",
   "Register": "Daftar",
-  "LoginEmailValidatorNull": "Mohon masukkan sebuah email",
-  "LoginEmailValidatorValid": "Mohon masukkan email yang valid",
+  "EmailValidatorNull": "Mohon masukkan sebuah email",
+  "EmailValidatorValid": "Mohon masukkan email yang valid",
   "NameValidatorNull": "Mohon masukkan nama anda",
   "NameValidatorValid": "Nama tidak boleh mengandung angka",
   "PasswordValidatorNull": "Mohon masukkan password anda",
@@ -15,6 +15,15 @@
   "RegisterAppBar": "Daftar Dengan Email",
   "RegisterName": "Nama",
   "RegisterToLogin": "Sudah memiliki akun?",
-  "RegistrationComplete": "Registrasi Berhasil! Kamu dapat masuk sekarang."
-
+  "RegistrationComplete": "Registrasi Berhasil! Kamu dapat masuk sekarang.",
+  "Logout": "Keluar",
+  "LogoutTitle": "Yakin Keluar?",
+  "LogoutMessage": "Apa anda yakin untuk keluar? Keluar membutuhkan anda untuk masuk agar dapat mengakses akun anda kembali.",
+  "Yes": "Ya",
+  "No": "Tidak",
+  "AddCaption": "Tambah Penjelasan....",
+  "CaptionEmpty": "Please Input Penjelasan",
+  "StoryAdded": "Status berhasil diunggah!",
+  "Camera": "Kamera",
+  "Gallery": "Galeri"
 }

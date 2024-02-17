@@ -48,10 +48,10 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title:  Text(context.tr('LoginAppBar')).tr(),
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: BackButtonWidget(),
+        title: Text(context.tr('LoginAppBar')),
+        leading: Padding(
+          padding: REdgeInsets.only(left: 12),
+          child: const BackButtonWidget(),
         ),
         actions: [
           Padding(
