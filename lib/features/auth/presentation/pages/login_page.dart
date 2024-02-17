@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:story/core/common/widgets/dropdown_flag.dart';
 import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/services/router.dart';
@@ -21,12 +23,12 @@ class LoginPage extends StatelessWidget {
 
     String? emailValidator(String? value) {
       if (value == null || value.isEmpty) {
-        return 'Please enter your email';
+        return 'EmailValidatorNull'.tr();
       }
       const emailPattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
       final regex = RegExp(emailPattern);
       if (!regex.hasMatch(value)) {
-        return 'Please enter a valid email';
+        return 'EmailValidatorValid'.tr();
       }
       return null;
     }
@@ -46,11 +48,17 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login With Email'),
+        title:  Text(context.tr('LoginAppBar')).tr(),
         leading: const Padding(
           padding: EdgeInsets.only(left: 12),
           child: BackButtonWidget(),
         ),
+        actions: [
+          Padding(
+            padding: REdgeInsets.only(right: 20),
+            child: const DropdownFlag(),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -88,7 +96,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         child: state is AuthLoading
                             ? const CupertinoActivityIndicator()
-                            : const Text('Login'),
+                            : const Text('Login').tr(),
                       ),
                       Gap.h20,
                       if (state is AuthError)
@@ -102,13 +110,13 @@ class LoginPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Don't have an account yet?",
+                            'LoginToRegister'.tr(),
                             style: context.bodySmall.copyWith(fontSize: 14.sp),
                           ),
                           TextButton(
                             onPressed: goToRegister,
                             child: Text(
-                              'Register',
+                              'Register'.tr(),
                               style: context.bodySmall.copyWith(
                                 fontSize: 14.sp,
                                 color: Colors.red,

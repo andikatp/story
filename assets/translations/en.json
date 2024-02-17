@@ -1,4 +1,19 @@
 {
-  "SignUp": "Sign Up",
-  "LogIn": "Log In"
+  "AuthSignUpButton": "Sign Up",
+  "AuthLoginButton": "Log In",
+  "LoginAppBar": "Login With Email",
+  "Login": "Login",
+  "LoginToRegister": "Don't have an account yet?",
+  "Register": "Register",
+  "EmailValidatorNull": "Please enter your email",
+  "EmailValidatorValid": "Please enter a valid email",
+  "NameValidatorNull": "Please enter your name",
+  "NameValidatorValid": "Name should not contain numbers",
+  "PasswordValidatorNull": "Please enter your password",
+  "PasswordValidatorValid": "Password must be at least 7 characters",
+  "PasswordValidatorValidNumber": "Password must contain letter and number",
+  "RegisterAppBar": "Register With Email",
+  "RegisterName": "Name",
+  "RegisterToLogin": "Already have an account?",
+  "RegistrationComplete": "Registration Successful! You can now log in."
 }

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:story/core/common/widgets/dropdown_flag.dart';
 import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/res/colours.dart';
@@ -23,22 +25,22 @@ class RegisterPage extends StatelessWidget {
 
     String? nameValidator(String? value) {
       if (value == null || value.isEmpty) {
-        return 'Please enter your name';
+        return 'NameValidatorNull'.tr();
       }
       if (value.contains(RegExp(r'\d'))) {
-        return 'Name should not contain numbers';
+        return 'NameValidatorValid'.tr();
       }
       return null;
     }
 
     String? emailValidator(String? value) {
       if (value == null || value.isEmpty) {
-        return 'Please enter your email';
+        return 'EmailValidatorNull'.tr();
       }
       const emailPattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
       final regex = RegExp(emailPattern);
       if (!regex.hasMatch(value)) {
-        return 'Please enter a valid email';
+        return 'EmailValidatorValid'.tr();
       }
       return null;
     }
@@ -59,11 +61,17 @@ class RegisterPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register With Email'),
+        title: Text(context.tr('RegisterAppBar')),
         leading: const Padding(
           padding: EdgeInsets.only(left: 12),
           child: BackButtonWidget(),
         ),
+        actions: [
+          Padding(
+            padding: REdgeInsets.only(right: 20),
+            child: const DropdownFlag(),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -79,7 +87,7 @@ class RegisterPage extends StatelessWidget {
                       backgroundColor: Colours.primaryColor,
                       behavior: SnackBarBehavior.floating,
                       content: Text(
-                        'Registration Successful! You can now log in.',
+                        'RegistrationComplete'.tr(),
                         textAlign: TextAlign.center,
                         style: context.bodySmall.copyWith(
                           color: Colours.backgroundColor,
@@ -97,7 +105,7 @@ class RegisterPage extends StatelessWidget {
                     GeneralInputField(
                       type: TextInputType.name,
                       controller: nameController,
-                      label: 'Name',
+                      label: 'RegisterName'.tr(),
                       icon: Icons.account_box_outlined,
                       validator: nameValidator,
                     ),
@@ -119,7 +127,7 @@ class RegisterPage extends StatelessWidget {
                       ),
                       child: state is AuthLoading
                           ? const CupertinoActivityIndicator()
-                          : const Text('Register'),
+                          : const Text('Register').tr(),
                     ),
                     Gap.h20,
                     if (state is AuthError)
@@ -133,13 +141,13 @@ class RegisterPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Already have an account?',
+                          'RegisterToLogin'.tr(),
                           style: context.bodySmall.copyWith(fontSize: 14.sp),
                         ),
                         TextButton(
                           onPressed: goToLogin,
                           child: Text(
-                            'Login',
+                            'Login'.tr(),
                             style: context.bodySmall.copyWith(
                               fontSize: 14.sp,
                               color: Colors.red,

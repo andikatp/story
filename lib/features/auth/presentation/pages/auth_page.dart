@@ -3,20 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:story/core/common/widgets/dropdown_flag.dart';
 import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/res/colours.dart';
 import 'package:story/core/services/router.dart';
-import 'package:story/features/auth/presentation/widgets/dropdown_flag.dart';
 
-class AuthPage extends StatefulWidget {
+class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 
-  @override
-  State<AuthPage> createState() => _AuthPageState();
-}
-
-class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     void goToLogin() => context.pushNamed(Routes.login.name);
@@ -25,17 +20,15 @@ class _AuthPageState extends State<AuthPage> {
       appBar: AppBar(
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: DropdownFlag(
-              changedLanguage: (value) => context.setLocale(Locale(value)),
-            ),
+            padding: REdgeInsets.only(right: 20),
+            child: const DropdownFlag(),
           ),
         ],
       ),
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Padding(
-          padding: REdgeInsets.only(top: 56.h),
+          padding: REdgeInsets.only(top: Sizes.p56),
           child: Center(
             child: Column(
               children: [
@@ -59,11 +52,11 @@ class _AuthPageState extends State<AuthPage> {
         padding: REdgeInsets.symmetric(horizontal: Sizes.p32)
             .copyWith(bottom: Sizes.p16),
         child: Wrap(
-          runSpacing: 16.h,
+          runSpacing: Sizes.p16.h,
           children: [
             ElevatedButton(
               onPressed: goToRegister,
-              child: const Text('SignUp').tr(),
+              child: const Text('AuthSignUpButton').tr(),
             ),
             ElevatedButton(
               onPressed: goToLogin,
@@ -75,7 +68,7 @@ class _AuthPageState extends State<AuthPage> {
                   width: 1.5,
                 ),
               ),
-              child: const Text('LogIn').tr(),
+              child: const Text('AuthLoginButton').tr(),
             ),
           ],
         ),

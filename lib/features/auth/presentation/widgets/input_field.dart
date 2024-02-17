@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:story/core/extensions/extension.dart';
@@ -60,10 +61,10 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
 
   String? validator(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your password';
+      return 'PasswordValidatorNull'.tr();
     }
     if (value.length < 7) {
-      return 'Password must be at least 7 characters';
+      return 'PasswordValidatorValid'.tr();
     }
     final letter = RegExp('[a-zA-Z]');
     final number = RegExp('[0-9]');
@@ -72,7 +73,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
     if (!letter.hasMatch(value) || !number.hasMatch(value)
         // || !specialChar.hasMatch(value) **works but dont want to use it**
         ) {
-      return 'Password must contain at least one letter, one number';
+      return 'PasswordValidatorValidNumber'.tr();
     }
     return null;
   }
