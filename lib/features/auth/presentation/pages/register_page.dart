@@ -62,9 +62,9 @@ class RegisterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(context.tr('RegisterAppBar')),
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: BackButtonWidget(),
+        leading: Padding(
+          padding: REdgeInsets.only(left: 12),
+          child: const BackButtonWidget(),
         ),
         actions: [
           Padding(

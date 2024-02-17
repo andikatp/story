@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,8 +23,8 @@ class AddStory extends StatelessWidget {
       final description = descriptionController.text.trim();
       if (description.isEmpty) {
         context.messengger.showSnackBar(
-          const SnackBar(
-            content: Text('Please Input Description'),
+          SnackBar(
+            content: const Text('CaptionEmpty').tr(),
             behavior: SnackBarBehavior.floating,
           ),
         );
@@ -52,8 +53,8 @@ class AddStory extends StatelessWidget {
           }
           if (state is StoryAdded) {
             context.messengger.showSnackBar(
-              const SnackBar(
-                content: Text('Status has been uploaded successfully!'),
+              SnackBar(
+                content: const Text('StoryAdded').tr(),
                 behavior: SnackBarBehavior.floating,
               ),
             );

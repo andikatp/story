@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextFieldStory extends StatelessWidget {
   const TextFieldStory({
@@ -20,29 +22,29 @@ class TextFieldStory extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
         child: TextField(
           controller: descriptionController,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
-            fontSize: 17,
+            fontSize: 16.sp,
           ),
-          maxLines: 6,
+          maxLines: 3,
           minLines: 1,
           autofocus: true,
           decoration: InputDecoration(
             border: InputBorder.none,
-            hintText: 'Add Caption....',
-            hintStyle: const TextStyle(
+            hintText: 'AddCaption'.tr(),
+            hintStyle: TextStyle(
               color: Colors.white,
-              fontSize: 17,
+              fontSize: 17.sp,
             ),
             suffixIcon: IconButton(
               onPressed: addStory,
               style: IconButton.styleFrom(
                 backgroundColor: Colors.tealAccent[700],
               ),
-              icon: const Icon(
+              icon: Icon(
                 Icons.check,
                 color: Colors.white,
-                size: 27,
+                size: 27.sp,
               ),
             ),
           ),

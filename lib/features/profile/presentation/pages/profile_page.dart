@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:story/core/common/widgets/dropdown_flag.dart';
 import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/services/router.dart';
@@ -17,26 +19,34 @@ class ProfilePage extends StatelessWidget {
         context: context,
         barrierDismissible: false,
         builder: (context) => AlertDialog(
-          title: const Text('Confirm Logout?'),
-          content: const Text(
-            'Are you sure you want to log out? Logging out will require you to '
-            'sign in again to access your account.',
-          ),
+          title: const Text('LogoutTitle').tr(),
+          content: const Text('LogoutMessage').tr(),
           actions: [
             TextButton(
               onPressed: () {
                 context.read<ProfileCubit>().logout();
               },
-              child: const Text('Yes'),
+              child: const Text('Yes').tr(),
             ),
             Gap.h12,
-            TextButton(onPressed: () => context.pop(), child: const Text('No')),
+            TextButton(
+              onPressed: () => context.pop(),
+              child: const Text('No').tr(),
+            ),
           ],
         ),
       );
     }
 
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: REdgeInsets.only(right: 20),
+            child: const DropdownFlag(),
+          ),
+        ],
+      ),
       body: SafeArea(
         minimum: REdgeInsets.all(32),
         child: BlocConsumer<ProfileCubit, ProfileState>(
@@ -54,7 +64,7 @@ class ProfilePage extends StatelessWidget {
             return Center(
               child: ElevatedButton(
                 onPressed: logout,
-                child: const Text('Logout'),
+                child: Text(context.tr('Logout')),
               ),
             );
           },

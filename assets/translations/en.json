@@ -15,5 +15,15 @@
   "RegisterAppBar": "Register With Email",
   "RegisterName": "Name",
   "RegisterToLogin": "Already have an account?",
-  "RegistrationComplete": "Registration Successful! You can now log in."
+  "RegistrationComplete": "Registration Successful! You can now log in.",
+  "Logout": "Logout",
+  "LogoutTitle": "Confirm Logout?",
+  "LogoutMessage": "Are you sure you want to log out? Logging out will require you to sign in again to access your account.",
+  "Yes": "Yes",
+  "No": "No",
+  "AddCaption": "Add Caption....",
+  "CaptionEmpty": "Please Input Caption",
+  "StoryAdded": "Status has been uploaded successfully!",
+  "Camera": "Camera",
+  "Gallery": "Gallery"
 }
