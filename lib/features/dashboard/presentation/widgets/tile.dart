@@ -1,9 +1,12 @@
 import 'package:animations/animations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:story/core/constants/app_sizes.dart';
+import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/res/colours.dart';
 import 'package:story/features/dashboard/domain/entities/story_entity.dart';
 import 'package:story/features/dashboard/presentation/pages/detail_page.dart';
@@ -90,21 +93,35 @@ class Tile extends StatelessWidget {
         openColor: Colours.backgroundColor,
         closedColor: Colours.backgroundColor,
         useRootNavigator: true,
-        closedBuilder: (context, action) => CachedNetworkImage(
-          key: key,
-          imageUrl: story.photoUrl,
-          height: extent.h,
-          fit: BoxFit.cover,
-          placeholder: (_, __) => const Center(
-            child: CupertinoActivityIndicator(),
-          ),
-          errorWidget: (_, __, ___) => const Icon(Icons.error),
-          cacheManager: CacheManager(
-            Config(
-              'story',
-              stalePeriod: const Duration(minutes: 5),
+        closedBuilder: (context, action) => Stack(
+          children: [
+            CachedNetworkImage(
+              key: key,
+              width: double.infinity,
+              imageUrl: story.photoUrl,
+              height: extent.h,
+              fit: BoxFit.cover,
+              placeholder: (_, __) => const Center(
+                child: CupertinoActivityIndicator(),
+              ),
+              errorWidget: (_, __, ___) => const Icon(Icons.error),
+              cacheManager: CacheManager(
+                Config(
+                  'story',
+                  stalePeriod: const Duration(minutes: 5),
+                ),
+              ),
             ),
-          ),
+            Positioned(
+              bottom: Sizes.p8,
+              left: Sizes.p8,
+              child: Text(
+                'StoryName'.tr(namedArgs: {'name': story.name}),
+                style:
+                    context.labelSmall.copyWith(color: Colours.backgroundColor),
+              ),
+            ),
+          ],
         ),
         openBuilder: (context, action) => DetailPage(story: story),
       ),
