@@ -56,8 +56,7 @@ final router = GoRouter(
               path: '/dashboard',
               name: Routes.dashboard.name,
               builder: (_, __) => BlocProvider(
-                create: (_) => sl<DashboardBloc>()
-                  ..add(const DashboardGetStories(page: 1)),
+                create: (_) => sl<DashboardBloc>(),
                 child: const DashboardPage(),
               ),
               routes: [

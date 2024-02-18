@@ -18,6 +18,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   void initState() {
+    context.read<DashboardBloc>().add(const DashboardGetStories(page: 1));
     _scrollController = ScrollController()..addListener(_loadMore);
     super.initState();
   }

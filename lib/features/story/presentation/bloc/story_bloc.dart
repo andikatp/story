@@ -22,17 +22,18 @@ class StoryBloc extends Bloc<StoryEvent, StoryState> {
     AddStoryEvent event,
     Emitter<StoryState> emit,
   ) async {
-    final result = await _addStory(
-      AddStoryParams(
-        event.lat,
-        event.lon,
-        file: event.file,
-        description: event.description,
-      ),
-    );
-    result.fold(
-      (failure) => emit(StoryError(message: failure.errorMessage)),
-      (_) => emit(const StoryAdded()),
-    );
+    emit(const StoryAdded());
+    // final result = await _addStory(
+    //   AddStoryParams(
+    //     event.lat,
+    //     event.lon,
+    //     file: event.file,
+    //     description: event.description,
+    //   ),
+    // );
+    // result.fold(
+    //   (failure) => emit(StoryError(message: failure.errorMessage)),
+    //   (_) => emit(const StoryAdded()),
+    // );
   }
 }
