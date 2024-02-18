@@ -71,26 +71,6 @@ class _DashboardPageState extends State<DashboardPage> {
                   );
                 },
               );
-            // return GridView.custom(
-            //   controller: _scrollController,
-            //   padding: REdgeInsets.all(8),
-            //   gridDelegate: SliverQuiltedGridDelegate(
-            //     crossAxisCount: 4,
-            //     mainAxisSpacing: 8,
-            //     crossAxisSpacing: 8,
-            //     repeatPattern: QuiltedGridRepeatPattern.inverted,
-            //     pattern: [
-            //       const QuiltedGridTile(2, 2),
-            //       const QuiltedGridTile(1, 1),
-            //       const QuiltedGridTile(1, 1),
-            //       const QuiltedGridTile(1, 2),
-            //     ],
-            //   ),
-            //   childrenDelegate: SliverChildBuilderDelegate(
-            //     childCount: state.stories.length,
-            //     (context, index) => Tile(story: state.stories[index]),
-            //   ),
-            // );
           }
         },
       ),
