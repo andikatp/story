@@ -64,33 +64,35 @@ class HomePage extends StatelessWidget {
     }
 
     Future<void> takeStory() async {
-      final picker = ImagePicker();
       await showDialog<AlertDialog>(
         context: context,
-        builder: (context) => AlertDialog(
-          content: SizedBox(
-            height: 0.15.sh,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                buildOption(
-                  icon: Icons.camera,
-                  label: 'Camera'.tr(),
-                  onTap: () async {
-                    await handleImageSelection(ImageSource.camera, picker);
-                  },
-                ),
-                buildOption(
-                  icon: Icons.image,
-                  label: 'Gallery'.tr(),
-                  onTap: () async {
-                    await handleImageSelection(ImageSource.gallery, picker);
-                  },
-                ),
-              ],
+        builder: (_) {
+          final picker = ImagePicker();
+          return AlertDialog(
+            content: SizedBox(
+              height: 0.15.sh,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  buildOption(
+                    icon: Icons.camera,
+                    label: 'Camera'.tr(),
+                    onTap: () async {
+                      await handleImageSelection(ImageSource.camera, picker);
+                    },
+                  ),
+                  buildOption(
+                    icon: Icons.image,
+                    label: 'Gallery'.tr(),
+                    onTap: () async {
+                      await handleImageSelection(ImageSource.gallery, picker);
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
     }
 
