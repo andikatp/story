@@ -67,9 +67,7 @@ Future<void> _initDashboard() async {
   //feature --> Dashboard
   //Business Logic
   sl
-    ..registerFactory(
-      () => DashboardBloc(getStories: sl()),
-    )
+    ..registerFactory(() => DashboardBloc(getStories: sl()))
     // usecases
     ..registerLazySingleton(() => GetStories(repository: sl()))
     // repositories

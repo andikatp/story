@@ -63,18 +63,18 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
     if (value == null || value.isEmpty) {
       return 'PasswordValidatorNull'.tr();
     }
-    if (value.length < 7) {
+    if (value.length < 8) {
       return 'PasswordValidatorValid'.tr();
     }
-    final letter = RegExp('[a-zA-Z]');
-    final number = RegExp('[0-9]');
+    //**works but dont want to use it**
+    // final letter = RegExp('[a-zA-Z]');
+    // final number = RegExp('[0-9]');
     // final specialChar = RegExp(r'[!@#\$%^&*(),.?":{}|<>]');
-
-    if (!letter.hasMatch(value) || !number.hasMatch(value)
-        // || !specialChar.hasMatch(value) **works but dont want to use it**
-        ) {
-      return 'PasswordValidatorValidNumber'.tr();
-    }
+    // if (!letter.hasMatch(value)
+    // !letter.hasMatch(value)|| !specialChar.hasMatch(value)
+    // ) {
+    // return 'PasswordValidatorValidNumber'.tr();
+    // }
     return null;
   }
 

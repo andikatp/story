@@ -68,8 +68,8 @@ final router = GoRouter(
             GoRoute(
               path: '/profile',
               name: Routes.profile.name,
-              builder: (_, state) => BlocProvider(
-                create: (context) => sl<ProfileCubit>(),
+              builder: (_, __) => BlocProvider(
+                create: (_) => sl<ProfileCubit>(),
                 child: const ProfilePage(),
               ),
             ),

@@ -10,7 +10,7 @@
   "NameValidatorNull": "Mohon masukkan nama anda",
   "NameValidatorValid": "Nama tidak boleh mengandung angka",
   "PasswordValidatorNull": "Mohon masukkan password anda",
-  "PasswordValidatorValid": "Password minimal harus 7 karakter",
+  "PasswordValidatorValid": "Password minimal harus 8 karakter",
   "PasswordValidatorValidNumber": "Password harus mengandung huruf dan angka",
   "RegisterAppBar": "Daftar Dengan Email",
   "RegisterName": "Nama",

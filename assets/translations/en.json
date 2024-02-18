@@ -10,7 +10,7 @@
   "NameValidatorNull": "Please enter your name",
   "NameValidatorValid": "Name should not contain numbers",
   "PasswordValidatorNull": "Please enter your password",
-  "PasswordValidatorValid": "Password must be at least 7 characters",
+  "PasswordValidatorValid": "Password must be at least 8 characters",
   "PasswordValidatorValidNumber": "Password must contain letter and number",
   "RegisterAppBar": "Register With Email",
   "RegisterName": "Name",
