@@ -18,14 +18,12 @@ class ProfilePage extends StatelessWidget {
       return showDialog<void>(
         context: context,
         barrierDismissible: false,
-        builder: (context) => AlertDialog(
+        builder: (ctx) => AlertDialog(
           title: const Text('LogoutTitle').tr(),
           content: const Text('LogoutMessage').tr(),
           actions: [
             TextButton(
-              onPressed: () {
-                context.read<ProfileCubit>().logout();
-              },
+              onPressed: () => context.read<ProfileCubit>().logout(),
               child: const Text('Yes').tr(),
             ),
             Gap.h12,
@@ -52,7 +50,7 @@ class ProfilePage extends StatelessWidget {
         child: BlocConsumer<ProfileCubit, ProfileState>(
           listener: (context, state) {
             if (state is LoggedOut) {
-              context.goNamed(Routes.auth.name);
+              context.pushReplacementNamed(Routes.auth.name);
             }
             if (state is ProfileError) {
               context.messengger.hideCurrentSnackBar();

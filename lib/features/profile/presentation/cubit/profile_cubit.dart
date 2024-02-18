@@ -9,6 +9,8 @@ class ProfileCubit extends Cubit<ProfileState> {
       : _logout = logout,
         super(const ProfileInitial());
 
+  final Logout _logout;
+
   Future<void> logout() async {
     emit(const ProfileLoading());
     final result = await _logout();
@@ -17,6 +19,5 @@ class ProfileCubit extends Cubit<ProfileState> {
       (_) => emit(const LoggedOut()),
     );
   }
-
-  final Logout _logout;
+  
 }
