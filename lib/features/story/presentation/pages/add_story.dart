@@ -52,7 +52,7 @@ class AddStory extends StatelessWidget {
             context.pop();
           }
           if (state is StoryAdded) {
-            context.goNamed(Routes.dashboard.name);
+            context.replaceNamed(Routes.dashboard.name);
             context.messengger.showSnackBar(
               SnackBar(
                 content: const Text('StoryAdded').tr(),

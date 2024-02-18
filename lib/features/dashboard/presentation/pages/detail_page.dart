@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:readmore/readmore.dart';
 import 'package:story/core/constants/app_sizes.dart';
+import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/res/colours.dart';
 import 'package:story/features/dashboard/domain/entities/story_entity.dart';
 
@@ -21,6 +22,10 @@ class DetailPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        title: Text(story.name),
+        titleTextStyle:
+            context.titleMedium.copyWith(color: Colours.backgroundColor),
+        centerTitle: false,
         leading: IconButton(
           onPressed: () => context.pop(),
           icon: const Icon(Icons.chevron_left),
