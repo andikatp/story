@@ -95,6 +95,7 @@ class HomePage extends StatelessWidget {
     }
 
     return Scaffold(
+      extendBody: true,
       body: navigationShell,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: const [Icons.home, Icons.person],

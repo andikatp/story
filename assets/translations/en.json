@@ -25,5 +25,7 @@
   "CaptionEmpty": "Please Input Caption",
   "StoryAdded": "Status has been uploaded successfully!",
   "Camera": "Camera",
-  "Gallery": "Gallery"
+  "Gallery": "Gallery",
+  "ReadMore": "Read More",
+  "ShowLess": " Show Less"
 }

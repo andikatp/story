@@ -11,23 +11,23 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       name: Routes.splash.name,
-      builder: (_, state) => const SplashPage(),
+      builder: (_, __) => const SplashPage(),
     ),
     GoRoute(
       path: '/auth',
       name: Routes.auth.name,
-      builder: (context, state) => BlocProvider(
-        create: (context) => sl<AuthBloc>(),
+      builder: (_, __) => BlocProvider(
+        create: (_) => sl<AuthBloc>(),
         child: const AuthPage(),
       ),
       routes: [
         GoRoute(
           path: 'login',
           name: Routes.login.name,
-          pageBuilder: (context, state) => CustomSlideTransition(
+          pageBuilder: (_, state) => CustomSlideTransition(
             key: state.pageKey,
             child: BlocProvider(
-              create: (context) => sl<AuthBloc>(),
+              create: (_) => sl<AuthBloc>(),
               child: const LoginPage(),
             ),
           ),
@@ -35,10 +35,10 @@ final router = GoRouter(
         GoRoute(
           path: 'register',
           name: Routes.register.name,
-          pageBuilder: (context, state) => CustomSlideTransition(
+          pageBuilder: (_, state) => CustomSlideTransition(
             key: state.pageKey,
             child: BlocProvider(
-              create: (context) => sl<AuthBloc>(),
+              create: (_) => sl<AuthBloc>(),
               child: const RegisterPage(),
             ),
           ),
@@ -46,7 +46,7 @@ final router = GoRouter(
       ],
     ),
     StatefulShellRoute.indexedStack(
-      builder: (context, _, navigationShell) => HomePage(
+      builder: (_, __, navigationShell) => HomePage(
         navigationShell: navigationShell,
       ),
       branches: [
@@ -55,11 +55,21 @@ final router = GoRouter(
             GoRoute(
               path: '/dashboard',
               name: Routes.dashboard.name,
-              builder: (context, state) => BlocProvider(
-                create: (context) => sl<DashboardBloc>()
+              builder: (_, __) => BlocProvider(
+                create: (_) => sl<DashboardBloc>()
                   ..add(const DashboardGetStories(page: 1)),
                 child: const DashboardPage(),
               ),
+              routes: [
+                GoRoute(
+                  path: 'detail',
+                  name: Routes.detail.name,
+                  builder: (_, state) {
+                    final story = state.extra! as StoryEntity;
+                    return DetailPage(story: story);
+                  },
+                ),
+              ],
             ),
           ],
         ),
@@ -80,8 +90,8 @@ final router = GoRouter(
     GoRoute(
       path: '/add-story',
       name: Routes.addStory.name,
-      builder: (context, state) => BlocProvider(
-        create: (context) => sl<StoryBloc>(),
+      builder: (_, __) => BlocProvider(
+        create: (_) => sl<StoryBloc>(),
         child: const AddStory(),
       ),
     ),
