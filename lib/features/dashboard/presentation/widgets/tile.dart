@@ -1,11 +1,12 @@
+import 'package:animations/animations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
-import 'package:story/core/services/router.dart';
+import 'package:story/core/res/colours.dart';
 import 'package:story/features/dashboard/domain/entities/story_entity.dart';
+import 'package:story/features/dashboard/presentation/pages/detail_page.dart';
 
 class Tile extends StatelessWidget {
   const Tile({required this.story, required this.extent, super.key});
@@ -82,13 +83,14 @@ class Tile extends StatelessWidget {
     //     },
     //   );
     // }
-    void goToDetail() => context.pushNamed(Routes.detail.name, extra: story);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(16).r,
-      child: GestureDetector(
-        onTap: goToDetail,
-        child: CachedNetworkImage(
+      child: OpenContainer(
+        openColor: Colours.backgroundColor,
+        closedColor: Colours.backgroundColor,
+        useRootNavigator: true,
+        closedBuilder: (context, action) => CachedNetworkImage(
           key: key,
           imageUrl: story.photoUrl,
           height: extent.h,
@@ -104,6 +106,7 @@ class Tile extends StatelessWidget {
             ),
           ),
         ),
+        openBuilder: (context, action) => DetailPage(story: story),
       ),
     );
   }

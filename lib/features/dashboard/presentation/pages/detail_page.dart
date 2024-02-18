@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:readmore/readmore.dart';
 import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/res/colours.dart';
@@ -17,6 +18,16 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(Icons.chevron_left),
+          iconSize: Sizes.p44.sp,
+          color: Colours.backgroundColor,
+        ),
+      ),
       body: Stack(
         children: [
           CachedNetworkImage(
