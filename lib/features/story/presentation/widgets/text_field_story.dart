@@ -14,38 +14,35 @@ class TextFieldStory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      child: Container(
-        color: Colors.black38,
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-        child: TextField(
-          controller: descriptionController,
-          style: TextStyle(
+    return Container(
+      color: Colors.black38,
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+      child: TextField(
+        controller: descriptionController,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16.sp,
+        ),
+        maxLines: 3,
+        minLines: 1,
+        autofocus: true,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: 'AddCaption'.tr(),
+          hintStyle: TextStyle(
             color: Colors.white,
-            fontSize: 16.sp,
+            fontSize: 17.sp,
           ),
-          maxLines: 3,
-          minLines: 1,
-          autofocus: true,
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: 'AddCaption'.tr(),
-            hintStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 17.sp,
+          suffixIcon: IconButton(
+            onPressed: addStory,
+            style: IconButton.styleFrom(
+              backgroundColor: Colors.tealAccent[700],
             ),
-            suffixIcon: IconButton(
-              onPressed: addStory,
-              style: IconButton.styleFrom(
-                backgroundColor: Colors.tealAccent[700],
-              ),
-              icon: Icon(
-                Icons.check,
-                color: Colors.white,
-                size: 27.sp,
-              ),
+            icon: Icon(
+              Icons.check,
+              color: Colors.white,
+              size: 27.sp,
             ),
           ),
         ),
