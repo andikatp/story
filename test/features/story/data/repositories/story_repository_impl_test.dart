@@ -38,7 +38,7 @@ void main() {
     await repository.addStory(
       file: tParams.file,
       description: tParams.description,
-      isLocationAdded: tParams.isLocationAdded,
+      location: tParams.location,
     );
     // assert
     expect(false, await mockNetworkInfo.isConnected);
@@ -60,14 +60,14 @@ void main() {
         () => mockStoryRemoteDataSource.addStory(
           file: any(named: 'file'),
           description: any(named: 'description'),
-          isLocationAdded: any(named: 'isLocationAdded'),
+          location: any(named: 'location'),
         ),
       ).thenAnswer((_) => Future.value());
       // act
       final result = await repository.addStory(
         file: tParams.file,
         description: tParams.description,
-        isLocationAdded: tParams.isLocationAdded,
+        location: tParams.location,
       );
       // assert
       expect(result, equals(const Right<dynamic, void>(null)));
@@ -75,7 +75,7 @@ void main() {
         () => mockStoryRemoteDataSource.addStory(
           file: tParams.file,
           description: tParams.description,
-          isLocationAdded: tParams.isLocationAdded,
+          location: tParams.location,
         ),
       ).called(1);
       verifyNoMoreInteractions(mockStoryRemoteDataSource);
@@ -89,14 +89,14 @@ void main() {
         () => mockStoryRemoteDataSource.addStory(
           file: any(named: 'file'),
           description: any(named: 'description'),
-          isLocationAdded: any(named: 'isLocationAdded'),
+          location: any(named: 'location'),
         ),
       ).thenThrow(tException);
       // act
       final result = await repository.addStory(
         file: tParams.file,
         description: tParams.description,
-        isLocationAdded: tParams.isLocationAdded,
+        location: tParams.location,
       );
       // assert
       expect(
@@ -109,7 +109,7 @@ void main() {
         () => mockStoryRemoteDataSource.addStory(
           file: tParams.file,
           description: tParams.description,
-          isLocationAdded: tParams.isLocationAdded,
+          location: tParams.location,
         ),
       ).called(1);
       verifyNoMoreInteractions(mockStoryRemoteDataSource);

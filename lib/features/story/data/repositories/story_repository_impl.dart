@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:story/core/errors/exceptions.dart';
 import 'package:story/core/errors/failures.dart';
@@ -22,7 +23,7 @@ class StoryRepositoryImpl implements StoryRepository {
   ResultFuture<void> addStory({
     required XFile file,
     required String description,
-    required bool isLocationAdded,
+    required LatLng? location,
   }) async {
     try {
       if (!await _networkInfo.isConnected) {
@@ -31,7 +32,7 @@ class StoryRepositoryImpl implements StoryRepository {
       final result = await _dataSource.addStory(
         file: file,
         description: description,
-        isLocationAdded: isLocationAdded,
+        location: location,
       );
       return Right(result);
     } on ServerException catch (e) {
@@ -40,8 +41,12 @@ class StoryRepositoryImpl implements StoryRepository {
   }
 
   @override
-  ResultFuture<Position> getPosition() {
-    // TODO: implement getPosition
-    throw UnimplementedError();
+  ResultFuture<Position> getPosition() async {
+    try {
+      final result = await _dataSource.getLocation();
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure.fromException(e));
+    }
   }
 }

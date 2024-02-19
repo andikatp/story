@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:story/core/extensions/extension.dart';
-import 'package:story/core/res/colours.dart';
-import 'package:story/features/story/presentation/pages/location_map_page.dart';
+import 'package:story/core/services/router.dart';
 
 class LocationWidget extends StatefulWidget {
   const LocationWidget({required this.setIsLocationOn, super.key});
 
-  final void Function({required bool newValue}) setIsLocationOn;
+  final void Function({required LatLng? location}) setIsLocationOn;
 
   @override
   State<LocationWidget> createState() => _LocationWidgetState();
@@ -15,27 +16,20 @@ class LocationWidget extends StatefulWidget {
 class _LocationWidgetState extends State<LocationWidget> {
   bool _isLocationOn = false;
 
-  void setLocation() {
-    // context.messengger.clearSnackBars();
-    // context.messengger.showSnackBar(
-    //   SnackBar(
-    //     content: Text(
-    //       _isLocationOn ? 'Location Disabled..' : 'Location Enabled',
-    //       style: const TextStyle(color: Colors.white),
-    //     ),
-    //     duration: const Duration(milliseconds: 300),
-    //     backgroundColor: Colours.primaryColor,
-    //     behavior: SnackBarBehavior.floating,
-    //   ),
-    // );
-    setState(() => _isLocationOn = !_isLocationOn);
-    Navigator.push(
-      context,
-      MaterialPageRoute<Widget>(
-        builder: (context) => const LocationMapPage(),
-      ),
-    );
-    widget.setIsLocationOn(newValue: _isLocationOn);
+  Future<void> setLocation() async {
+    final location =
+        await context.pushNamed<LatLng>(Routes.addLocationStory.name);
+    if (location != null && context.mounted) {
+      context.messengger.hideCurrentSnackBar();
+      context.messengger.showSnackBar(
+        const SnackBar(
+          content: Text('Location has been added!'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+    setState(() => _isLocationOn = location != null);
+    widget.setIsLocationOn(location: location);
   }
 
   @override

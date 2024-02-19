@@ -89,10 +89,23 @@ final router = GoRouter(
     GoRoute(
       path: '/add-story',
       name: Routes.addStory.name,
-      builder: (_, __) => BlocProvider(
-        create: (_) => sl<StoryBloc>(),
-        child: const AddStoryPage(),
-      ),
+      builder: (_, state) {
+        final image = state.extra! as XFile;
+        return BlocProvider(
+          create: (_) => sl<StoryBloc>(),
+          child: AddStoryPage(image: image),
+        );
+      },
+      routes: [
+        GoRoute(
+          path: 'location-add-story',
+          name: Routes.addLocationStory.name,
+          builder: (_, state) => BlocProvider(
+            create: (_) => sl<StoryBloc>(),
+            child: const LocationMapPage(),
+          ),
+        ),
+      ],
     ),
   ],
 );
