@@ -14,8 +14,7 @@ abstract class StoryRemoteDataSource {
   Future<void> addStory({
     required XFile file,
     required String description,
-    double? lat,
-    double? lon,
+    required bool isLocationAdded,
   });
 }
 
@@ -33,18 +32,18 @@ class StoryRemoteDataSourceImpl extends StoryRemoteDataSource {
   Future<void> addStory({
     required XFile file,
     required String description,
-    double? lat,
-    double? lon,
+    required bool isLocationAdded,
   }) async {
     final url = Uri.parse(
       '${AppConstant.baseUrl}${ApiEndpoint.stories}',
     );
-
+    const lat = 0;
+    const lon = 0;
     final request = http.MultipartRequest('POST', url);
     request.files.add(await http.MultipartFile.fromPath('photo', file.path));
     request.fields['description'] = description;
-    if (lat != null) request.fields['lat'] = lat.toString();
-    if (lon != null) request.fields['lon'] = lon.toString();
+    request.fields['lat'] = lat.toString();
+    request.fields['lon'] = lon.toString();
 
     final token = await getToken();
     request.headers['Authorization'] = 'Bearer $token';

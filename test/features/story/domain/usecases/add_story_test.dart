@@ -26,10 +26,9 @@ void main() {
       // arrange
       when(
         () => mockStoryRepository.addStory(
-          lat: any(named: 'lat'),
-          lon: any(named: 'lon'),
           file: any(named: 'file'),
           description: any(named: 'description'),
+          isLocationAdded: any(named: 'isLocationAdded'),
         ),
       ).thenAnswer((_) async => const Right(null));
       // act
@@ -40,8 +39,7 @@ void main() {
         () => mockStoryRepository.addStory(
           file: tParams.file,
           description: tParams.description,
-          lat: tParams.lat,
-          lon: tParams.lon,
+          isLocationAdded: tParams.isLocationAdded,
         ),
       ).called(1);
       verifyNoMoreInteractions(mockStoryRepository);
@@ -53,10 +51,9 @@ void main() {
       // arrange
       when(
         () => mockStoryRepository.addStory(
-          lat: any(named: 'lat'),
-          lon: any(named: 'lon'),
           file: any(named: 'file'),
           description: any(named: 'description'),
+          isLocationAdded: any(named: ''),
         ),
       ).thenAnswer((_) async => const Left(ServerFailure(message: 'message')));
       // act
@@ -70,8 +67,7 @@ void main() {
         () => mockStoryRepository.addStory(
           file: tParams.file,
           description: tParams.description,
-          lat: tParams.lat,
-          lon: tParams.lon,
+          isLocationAdded: tParams.isLocationAdded,
         ),
       ).called(1);
       verifyNoMoreInteractions(mockStoryRepository);

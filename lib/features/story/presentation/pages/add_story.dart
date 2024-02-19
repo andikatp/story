@@ -37,8 +37,7 @@ class AddStory extends StatelessWidget {
             AddStoryEvent(
               file: img,
               description: description,
-              lat: null,
-              lon: null,
+              isLocationAdded: isLocationOn,
             ),
           );
     }

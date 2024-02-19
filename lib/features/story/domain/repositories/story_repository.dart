@@ -7,7 +7,6 @@ abstract class StoryRepository {
   ResultFuture<void> addStory({
     required XFile file,
     required String description,
-    double? lat,
-    double? lon,
+    required bool isLocationAdded,
   });
 }

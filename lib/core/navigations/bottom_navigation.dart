@@ -34,9 +34,6 @@ class HomePage extends StatelessWidget {
           extra: photo,
         );
       }
-      if (context.mounted) {
-        context.pop();
-      }
     }
 
     Widget buildOption({

@@ -24,10 +24,9 @@ class StoryBloc extends Bloc<StoryEvent, StoryState> {
   ) async {
     final result = await _addStory(
       AddStoryParams(
-        event.lat,
-        event.lon,
         file: event.file,
         description: event.description,
+        isLocationAdded: event.isLocationAdded,
       ),
     );
     result.fold(
