@@ -93,7 +93,7 @@ class Tile extends StatelessWidget {
         openColor: Colours.backgroundColor,
         closedColor: Colours.backgroundColor,
         useRootNavigator: true,
-        closedBuilder: (context, action) => Stack(
+        closedBuilder: (_, __) => Stack(
           children: [
             CachedNetworkImage(
               key: key,
@@ -123,7 +123,7 @@ class Tile extends StatelessWidget {
             ),
           ],
         ),
-        openBuilder: (context, action) => DetailPage(story: story),
+        openBuilder: (_, __) => DetailPage(story: story),
       ),
     );
   }

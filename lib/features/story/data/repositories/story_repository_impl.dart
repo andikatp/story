@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:story/core/errors/exceptions.dart';
 import 'package:story/core/errors/failures.dart';
@@ -36,5 +37,11 @@ class StoryRepositoryImpl implements StoryRepository {
     } on ServerException catch (e) {
       return Left(ServerFailure.fromException(e));
     }
+  }
+
+  @override
+  ResultFuture<Position> getPosition() {
+    // TODO: implement getPosition
+    throw UnimplementedError();
   }
 }

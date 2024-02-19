@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:readmore/readmore.dart';
 import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/extensions/extension.dart';
@@ -77,6 +78,7 @@ class DetailPage extends StatelessWidget {
               child: OpenContainer(
                 openColor: Colours.backgroundColor,
                 closedColor: Colours.backgroundColor,
+                openShape: const CircleBorder(),
                 closedBuilder: (context, action) => ElevatedButton.icon(
                   onPressed: action,
                   icon: const Icon(Icons.location_on),
@@ -85,7 +87,8 @@ class DetailPage extends StatelessWidget {
                     shape: const BeveledRectangleBorder(),
                   ),
                 ),
-                openBuilder: (context, action) => const MapPage(),
+                openBuilder: (context, action) =>
+                    MapPage(location: LatLng(story.lat!, story.lon!)),
               ),
             ),
         ],

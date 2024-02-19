@@ -15,7 +15,7 @@ import 'package:story/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:story/features/profile/presentation/pages/profile_page.dart';
 import 'package:story/features/splash/presentation/pages/splash_page.dart';
 import 'package:story/features/story/presentation/bloc/story_bloc.dart';
-import 'package:story/features/story/presentation/pages/add_story.dart';
+import 'package:story/features/story/presentation/pages/add_story_page.dart';
 
 part 'router.main.dart';
 

@@ -12,8 +12,8 @@ import 'package:story/features/story/presentation/bloc/story_bloc.dart';
 import 'package:story/features/story/presentation/widgets/location_widget.dart';
 import 'package:story/features/story/presentation/widgets/text_field_story.dart';
 
-class AddStory extends StatelessWidget {
-  const AddStory({super.key});
+class AddStoryPage extends StatelessWidget {
+  const AddStoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
