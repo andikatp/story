@@ -27,12 +27,14 @@ class HomePage extends StatelessWidget {
       ImagePicker picker,
     ) async {
       final photo = await picker.pickImage(source: source);
-      if (photo != null && context.mounted) {
+      if (context.mounted) {
         context.pop();
-        await context.pushNamed(
-          Routes.addStory.name,
-          extra: photo,
-        );
+        if (photo != null) {
+          await context.pushNamed(
+            Routes.addStory.name,
+            extra: photo,
+          );
+        }
       }
     }
 

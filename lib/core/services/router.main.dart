@@ -91,7 +91,7 @@ final router = GoRouter(
       name: Routes.addStory.name,
       builder: (_, __) => BlocProvider(
         create: (_) => sl<StoryBloc>(),
-        child: const AddStory(),
+        child: const AddStoryPage(),
       ),
     ),
   ],
