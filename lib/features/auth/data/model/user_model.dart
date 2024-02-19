@@ -1,6 +1,9 @@
-import 'package:story/core/utils/typedef.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:story/features/auth/domain/entity/user_entity.dart';
 
+part 'user_model.g.dart';
+
+@JsonSerializable()
 class UserModel extends UserEntity {
   const UserModel({
     required super.userId,
@@ -10,17 +13,8 @@ class UserModel extends UserEntity {
 
   const UserModel.empty() : super.empty();
 
-  factory UserModel.fromJson(ResultMap json) {
-    return UserModel(
-      userId: json['userId'] as String,
-      name: json['name'] as String,
-      token: json['token'] as String,
-    );
-  }
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
-  ResultMap toJson() => {
-        'userId': userId,
-        'name': name,
-        'token': token,
-      };
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }

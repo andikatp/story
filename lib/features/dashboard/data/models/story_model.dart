@@ -1,6 +1,9 @@
-import 'package:story/core/utils/typedef.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:story/features/dashboard/domain/entities/story_entity.dart';
 
+part 'story_model.g.dart';
+
+@JsonSerializable()
 class StoryModel extends StoryEntity {
   const StoryModel({
     required super.id,
@@ -14,27 +17,8 @@ class StoryModel extends StoryEntity {
 
   const StoryModel.empty() : super.empty();
 
-  factory StoryModel.fromJson(ResultMap json) {
-    return StoryModel(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      description: json['description'] as String,
-      photoUrl: json['photoUrl'] as String,
-      createdAt: json['createdAt'] as String,
-      lat: json['lat'] != null ? (json['lat'] as num).toDouble() : null,
-      lon: json['lon'] != null ? (json['lon'] as num).toDouble() : null,
-    );
-  }
+  factory StoryModel.fromJson(Map<String, dynamic> json) =>
+      _$StoryModelFromJson(json);
 
-  ResultMap toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'description': description,
-      'photoUrl': photoUrl,
-      'createdAt': createdAt,
-      'lat': lat,
-      'lon': lon,
-    };
-  }
+  Map<String, dynamic> toJson() => _$StoryModelToJson(this);
 }
