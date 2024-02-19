@@ -21,15 +21,17 @@ class StoryRepositoryImpl implements StoryRepository {
   ResultFuture<void> addStory({
     required XFile file,
     required String description,
-    double? lat,
-    double? lon,
+    required bool isLocationAdded,
   }) async {
     try {
       if (!await _networkInfo.isConnected) {
         return const Left(InternetFailure());
       }
-      final result =
-          await _dataSource.addStory(file: file, description: description);
+      final result = await _dataSource.addStory(
+        file: file,
+        description: description,
+        isLocationAdded: isLocationAdded,
+      );
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure.fromException(e));

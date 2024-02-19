@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +11,7 @@ import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/res/colours.dart';
 import 'package:story/features/dashboard/domain/entities/story_entity.dart';
+import 'package:story/features/dashboard/presentation/pages/map_page.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({required this.story, super.key});
@@ -24,13 +26,13 @@ class DetailPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         title: Text(story.name),
         titleTextStyle:
-            context.titleMedium.copyWith(color: Colours.backgroundColor),
+            context.titleSmall.copyWith(color: Colours.primaryColor),
         centerTitle: false,
         leading: IconButton(
           onPressed: () => context.pop(),
           icon: const Icon(Icons.chevron_left),
           iconSize: Sizes.p44.sp,
-          color: Colours.backgroundColor,
+          color: Colours.primaryColor,
         ),
       ),
       body: Stack(
@@ -39,6 +41,7 @@ class DetailPage extends StatelessWidget {
             key: key,
             imageUrl: story.photoUrl,
             height: 1.sh,
+            width: 1.sw,
             fit: BoxFit.cover,
             placeholder: (_, __) => const Center(
               child: CupertinoActivityIndicator(),
@@ -53,7 +56,7 @@ class DetailPage extends StatelessWidget {
           ),
           Align(
             child: Container(
-              color: Colors.grey.withOpacity(0.8),
+              color: Colours.primaryColor.withOpacity(0.8),
               padding: REdgeInsets.all(Sizes.p8),
               width: 1.sw,
               child: ReadMoreText(
@@ -68,6 +71,23 @@ class DetailPage extends StatelessWidget {
               ),
             ),
           ),
+          if (story.lat != null)
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: OpenContainer(
+                openColor: Colours.backgroundColor,
+                closedColor: Colours.backgroundColor,
+                closedBuilder: (context, action) => ElevatedButton.icon(
+                  onPressed: action,
+                  icon: const Icon(Icons.location_on),
+                  label: const Text('Show Location'),
+                  style: ElevatedButton.styleFrom(
+                    shape: const BeveledRectangleBorder(),
+                  ),
+                ),
+                openBuilder: (context, action) => const MapPage(),
+              ),
+            ),
         ],
       ),
     );

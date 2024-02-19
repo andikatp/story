@@ -11,18 +11,13 @@ class AddStoryEvent extends StoryEvent {
   const AddStoryEvent({
     required this.file,
     required this.description,
-    required this.lat,
-    required this.lon,
+    required this.isLocationAdded,
   });
 
   final XFile file;
   final String description;
-  final double? lat;
-  final double? lon;
+  final bool isLocationAdded;
 
   @override
-  List<Object> get props => [
-        file,
-        description,
-      ];
+  List<Object> get props => [file, description, isLocationAdded];
 }
