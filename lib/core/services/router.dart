@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:story/core/navigations/bottom_navigation.dart';
 import 'package:story/core/services/dependency_container.dart';
 import 'package:story/features/auth/presentation/bloc/auth_bloc.dart';
@@ -16,6 +17,7 @@ import 'package:story/features/profile/presentation/pages/profile_page.dart';
 import 'package:story/features/splash/presentation/pages/splash_page.dart';
 import 'package:story/features/story/presentation/bloc/story_bloc.dart';
 import 'package:story/features/story/presentation/pages/add_story_page.dart';
+import 'package:story/features/story/presentation/pages/location_map_page.dart';
 
 part 'router.main.dart';
 
@@ -29,4 +31,5 @@ enum Routes {
   detail,
   profile,
   addStory,
+  addLocationStory,
 }

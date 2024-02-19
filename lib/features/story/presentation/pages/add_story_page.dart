@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/services/router.dart';
@@ -13,15 +14,16 @@ import 'package:story/features/story/presentation/widgets/location_widget.dart';
 import 'package:story/features/story/presentation/widgets/text_field_story.dart';
 
 class AddStoryPage extends StatelessWidget {
-  const AddStoryPage({super.key});
+  const AddStoryPage({required this.image, super.key});
+  final XFile image;
 
   @override
   Widget build(BuildContext context) {
-    final img = GoRouterState.of(context).extra! as XFile;
     final descriptionController = TextEditingController();
-    var isLocationOn = false;
+    LatLng? userLocation;
 
-    void setIsLocationOn({required bool newValue}) => isLocationOn = newValue;
+    void setIsLocationOn({required LatLng? location}) =>
+        userLocation = location;
 
     void addStory() {
       final description = descriptionController.text.trim();
@@ -35,9 +37,9 @@ class AddStoryPage extends StatelessWidget {
       }
       context.read<StoryBloc>().add(
             AddStoryEvent(
-              file: img,
+              file: image,
               description: description,
-              isLocationAdded: isLocationOn,
+              location: userLocation,
             ),
           );
     }
@@ -46,7 +48,7 @@ class AddStoryPage extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: FileImage(
-            File(img.path),
+            File(image.path),
           ),
           fit: BoxFit.cover,
         ),

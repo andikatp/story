@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,7 +16,7 @@ abstract class StoryRemoteDataSource {
   Future<void> addStory({
     required XFile file,
     required String description,
-    required bool isLocationAdded,
+    required LatLng? location,
   });
 
   Future<Position> getLocation();
@@ -35,18 +36,13 @@ class StoryRemoteDataSourceImpl extends StoryRemoteDataSource {
   Future<void> addStory({
     required XFile file,
     required String description,
-    required bool isLocationAdded,
+    required LatLng? location,
   }) async {
     final url = Uri.parse(
       '${AppConstant.baseUrl}${ApiEndpoint.stories}',
     );
-    double? lat;
-    double? lon;
-    if (isLocationAdded) {
-      final location = await getLocation();
-      lat = location.latitude;
-      lon = location.longitude;
-    }
+    final lat = location?.latitude;
+    final lon = location?.longitude;
     final request = http.MultipartRequest('POST', url);
     request.files.add(await http.MultipartFile.fromPath('photo', file.path));
     request.fields['description'] = description;

@@ -107,9 +107,10 @@ Future<void> _initStory() async {
   //feature --> Dashboard
   //Business Logic
   sl
-    ..registerFactory(() => StoryBloc(addStory: sl()))
+    ..registerFactory(() => StoryBloc(addStory: sl(), getPosition: sl()))
     // usecases
     ..registerLazySingleton(() => AddStory(repository: sl()))
+    ..registerLazySingleton(() => GetPosition(repository: sl()))
     // repositories
     ..registerLazySingleton<StoryRepository>(
       () => StoryRepositoryImpl(dataSource: sl(), networkInfo: sl()),
