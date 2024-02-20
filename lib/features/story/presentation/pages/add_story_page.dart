@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:story/app_config.dart';
 import 'package:story/core/extensions/extension.dart';
 import 'package:story/core/res/colours.dart';
 import 'package:story/core/services/router.dart';
@@ -65,7 +66,10 @@ class AddStoryPage extends StatelessWidget {
             onPressed: context.pop,
             iconSize: 44.sp,
           ),
-          actions: [LocationWidget(setIsLocation: setIsLocation)],
+          actions: [
+            if (AppConfig.shared.flavor == Flavor.paid)
+              LocationWidget(setIsLocation: setIsLocation),
+          ],
         ),
         body: BlocListener<StoryBloc, StoryState>(
           listener: (context, state) {

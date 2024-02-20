@@ -5,6 +5,7 @@
         "name": "Story Free",
         "request": "launch",
         "type": "dart",
+        "program": "./lib/main_free.dart",
         "args": [
           "--flavor",
           "free"
@@ -14,7 +15,7 @@
         "name": "Story Paid",
         "request": "launch",
         "type": "dart",
-        "program": "lib/main_pro.dart",
+        "program": "./lib/main_paid.dart",
         "args": [
           "--flavor",
           "paid"
