@@ -91,6 +91,7 @@ final router = GoRouter(
       name: Routes.addStory.name,
       builder: (_, state) {
         final image = state.extra! as XFile;
+
         return BlocProvider(
           create: (_) => sl<StoryBloc>(),
           child: AddStoryPage(image: image),

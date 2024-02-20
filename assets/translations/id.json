@@ -28,5 +28,7 @@
   "Gallery": "Galeri",
   "ReadMore": "Lebih Lanjut",
   "ShowLess": " Tunjukkan Lebih Sedikit",
-  "StoryName": "Cerita {name}"
+  "StoryName": "Cerita {name}",
+  "LocationAdded": "Lokasi berhasil ditambahkan!",
+  "LocationButton": "Pilih lokasi ini?"
 }

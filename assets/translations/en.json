@@ -28,5 +28,7 @@
   "Gallery": "Gallery",
   "ReadMore": "Read More",
   "ShowLess": " Show Less",
-  "StoryName": "{name}'s Story"
+  "StoryName": "{name}'s Story",
+  "LocationAdded": "Location has been added!",
+  "LocationButton": "Choose this location?"
 }

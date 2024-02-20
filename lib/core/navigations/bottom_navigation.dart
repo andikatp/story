@@ -27,14 +27,11 @@ class HomePage extends StatelessWidget {
       ImagePicker picker,
     ) async {
       final photo = await picker.pickImage(source: source);
-      if (context.mounted) {
-        context.pop();
-        if (photo != null) {
-          await context.pushNamed(
-            Routes.addStory.name,
-            extra: photo,
-          );
-        }
+      if (photo != null && context.mounted) {
+        await context.pushNamed(
+          Routes.addStory.name,
+          extra: photo,
+        );
       }
     }
 
@@ -77,6 +74,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.camera,
                     label: 'Camera'.tr(),
                     onTap: () async {
+                      Navigator.pop(context);
                       await handleImageSelection(ImageSource.camera, picker);
                     },
                   ),
@@ -84,6 +82,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.image,
                     label: 'Gallery'.tr(),
                     onTap: () async {
+                      Navigator.pop(context);
                       await handleImageSelection(ImageSource.gallery, picker);
                     },
                   ),
