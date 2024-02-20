@@ -46,8 +46,8 @@ class StoryRemoteDataSourceImpl extends StoryRemoteDataSource {
     final request = http.MultipartRequest('POST', url);
     request.files.add(await http.MultipartFile.fromPath('photo', file.path));
     request.fields['description'] = description;
-    request.fields['lat'] = lat.toString();
-    request.fields['lon'] = lon.toString();
+    if (lat != null) request.fields['lat'] = lat.toString();
+    if (lon != null) request.fields['lon'] = lon.toString();
 
     final token = await _getToken();
     request.headers['Authorization'] = 'Bearer $token';

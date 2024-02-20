@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:another_flushbar/flushbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:story/core/extensions/extension.dart';
+import 'package:story/core/res/colours.dart';
 import 'package:story/core/services/router.dart';
 import 'package:story/features/story/presentation/bloc/story_bloc.dart';
 import 'package:story/features/story/presentation/widgets/location_widget.dart';
@@ -22,26 +24,27 @@ class AddStoryPage extends StatelessWidget {
     final descriptionController = TextEditingController();
     LatLng? userLocation;
 
-    void setIsLocationOn({required LatLng? location}) =>
-        userLocation = location;
+    void setIsLocation({required LatLng? location}) => userLocation = location;
 
-    void addStory() {
+    Future<void> addStory() async {
       final description = descriptionController.text.trim();
       if (description.isEmpty) {
-        context.messengger.showSnackBar(
-          SnackBar(
-            content: const Text('CaptionEmpty').tr(),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
+        await Flushbar<dynamic>(
+          message: 'CaptionEmpty'.tr(),
+          flushbarPosition: FlushbarPosition.TOP,
+          backgroundColor: Colours.primaryColor,
+          duration: const Duration(seconds: 1),
+          flushbarStyle: FlushbarStyle.GROUNDED,
+        ).show(context);
+      } else {
+        context.read<StoryBloc>().add(
+              AddStoryEvent(
+                file: image,
+                description: description,
+                location: userLocation,
+              ),
+            );
       }
-      context.read<StoryBloc>().add(
-            AddStoryEvent(
-              file: image,
-              description: description,
-              location: userLocation,
-            ),
-          );
     }
 
     return Container(
@@ -62,7 +65,7 @@ class AddStoryPage extends StatelessWidget {
             onPressed: context.pop,
             iconSize: 44.sp,
           ),
-          actions: [LocationWidget(setIsLocationOn: setIsLocationOn)],
+          actions: [LocationWidget(setIsLocation: setIsLocation)],
         ),
         body: BlocListener<StoryBloc, StoryState>(
           listener: (context, state) {
