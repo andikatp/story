@@ -56,11 +56,8 @@ final router = GoRouter(
               path: '/dashboard',
               name: Routes.dashboard.name,
               builder: (_, __) => BlocProvider(
-                create: (_) {
-                  print('refetch');
-                  return sl<DashboardBloc>()
-                  ..add(const DashboardGetStories(page: 1));
-                },
+                create: (_) => sl<DashboardBloc>()
+                  ..add(const DashboardGetStories(page: 1)),
                 child: const DashboardPage(),
               ),
               routes: [
