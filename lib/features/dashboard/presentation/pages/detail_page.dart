@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:readmore/readmore.dart';
 import 'package:story/core/constants/app_sizes.dart';
@@ -30,7 +29,7 @@ class DetailPage extends StatelessWidget {
             context.titleSmall.copyWith(color: Colours.primaryColor),
         centerTitle: false,
         leading: IconButton(
-          onPressed: () => context.pop(),
+          onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.chevron_left),
           iconSize: Sizes.p44.sp,
           color: Colours.primaryColor,
