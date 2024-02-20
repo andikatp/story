@@ -27,6 +27,13 @@ class AddStoryPage extends StatelessWidget {
 
     void setIsLocation({required LatLng? location}) => userLocation = location;
 
+    void clearAndNavigate(String path) {
+      while (context.canPop() == true) {
+        context.pop();
+      }
+      context.pushReplacementNamed(path);
+    }
+
     Future<void> addStory() async {
       final description = descriptionController.text.trim();
       if (description.isEmpty) {
@@ -74,16 +81,16 @@ class AddStoryPage extends StatelessWidget {
         body: BlocListener<StoryBloc, StoryState>(
           listener: (context, state) {
             if (state is StoryError) {
+              context.pop();
               context.messengger.showSnackBar(
                 SnackBar(
                   content: Text(state.message),
                   behavior: SnackBarBehavior.floating,
                 ),
               );
-              context.pop();
             }
             if (state is StoryAdded) {
-              context.pushReplacementNamed(Routes.dashboard.name);
+              clearAndNavigate(Routes.dashboard.name);
               context.messengger.showSnackBar(
                 SnackBar(
                   content: const Text('StoryAdded').tr(),

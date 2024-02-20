@@ -7,6 +7,7 @@ final router = GoRouter(
   debugLogDiagnostics: true,
   initialLocation: '/',
   routerNeglect: true,
+   extraCodec: const XFileCodec(),
   routes: [
     GoRoute(
       path: '/',
@@ -55,10 +56,13 @@ final router = GoRouter(
             GoRoute(
               path: '/dashboard',
               name: Routes.dashboard.name,
-              builder: (_, __) => BlocProvider(
-                create: (_) => sl<DashboardBloc>()
-                  ..add(const DashboardGetStories(page: 1)),
-                child: const DashboardPage(),
+              pageBuilder: (context, state) => CustomSlideTransition(
+                key: UniqueKey(),
+                child: BlocProvider(
+                  create: (_) => sl<DashboardBloc>()
+                      ..add(const DashboardGetStories(page: 1)),
+                  child: const DashboardPage(),
+                ),
               ),
               routes: [
                 GoRoute(
@@ -92,7 +96,6 @@ final router = GoRouter(
       name: Routes.addStory.name,
       builder: (_, state) {
         final image = state.extra! as XFile;
-
         return BlocProvider(
           create: (_) => sl<StoryBloc>(),
           child: AddStoryPage(image: image),
@@ -130,4 +133,36 @@ class CustomSlideTransition extends CustomTransitionPage<void> {
             );
           },
         );
+}
+
+
+class XFileCodec extends Codec<XFile?, dynamic> {
+  const XFileCodec();
+
+  @override
+  Converter<dynamic, XFile?> get decoder => const _XFileDecoder();
+
+  @override
+  Converter<XFile?, dynamic> get encoder => const _XFileEncoder();
+}
+
+class _XFileDecoder extends Converter<dynamic, XFile?> {
+  const _XFileDecoder();
+
+  @override
+  XFile? convert(dynamic input) {
+    if (input == null) {
+      return null;
+    }
+    return XFile(input as String);
+  }
+}
+
+class _XFileEncoder extends Converter<XFile?, dynamic> {
+  const _XFileEncoder();
+
+  @override
+  dynamic convert(XFile? input) {
+    return input?.path;
+  }
 }

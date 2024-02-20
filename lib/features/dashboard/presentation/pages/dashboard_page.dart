@@ -65,16 +65,12 @@ class _DashboardPageState extends State<DashboardPage> {
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
                 itemCount: state.stories.length,
-                itemBuilder: (context, index) {
-                  final delay = Duration(milliseconds: index * 500);
-                  return FadeInUp(
-                    delay: delay,
-                    child: Tile(
+                itemBuilder: (context, index) => FadeIn(
+                  child: Tile(
                       extent: (index % 5 + 1) * 100,
                       story: stories[index],
                     ),
-                  );
-                },
+                ),
               );
           }
         },
