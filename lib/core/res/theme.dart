@@ -31,13 +31,15 @@ class AppTheme {
       ),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: Colours.backgroundColor,
-      centerTitle: true,
-      titleTextStyle: TextStyle(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w700,
-      ),
-    ),
+        backgroundColor: Colours.backgroundColor,
+        centerTitle: true,
+        titleTextStyle: TextStyle(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.w700,
+        ),
+        iconTheme: const IconThemeData(
+          color: Colours.primaryColor,
+        ),),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         padding: REdgeInsets.symmetric(vertical: 10, horizontal: 8),

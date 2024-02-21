@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.camera,
                     label: 'Camera'.tr(),
                     onTap: () async {
-                      Navigator.pop(context);
+                      context.pop();
                       await handleImageSelection(ImageSource.camera, picker);
                     },
                   ),
@@ -82,7 +82,7 @@ class HomePage extends StatelessWidget {
                     icon: Icons.image,
                     label: 'Gallery'.tr(),
                     onTap: () async {
-                      Navigator.pop(context);
+                      context.pop();
                       await handleImageSelection(ImageSource.gallery, picker);
                     },
                   ),

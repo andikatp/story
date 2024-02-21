@@ -9,7 +9,7 @@
         "args": [
           "--flavor",
           "free"
-        ]
+        ],
       },
       {
         "name": "Story Paid",
@@ -20,6 +20,28 @@
           "--flavor",
           "paid"
         ]
+      },
+      {
+        "name": "Story Free Debug",
+        "request": "launch",
+        "type": "dart",
+        "program": "./lib/main_free.dart",
+        "args": [
+          "--flavor",
+          "free"
+        ],
+        "flutterMode": "debug",
+      },
+      {
+        "name": "Story Paid Debug",
+        "request": "launch",
+        "type": "dart",
+        "program": "./lib/main_paid.dart",
+        "args": [
+          "--flavor",
+          "paid"
+        ],
+        "flutterMode": "debug",
       }
     ]
   }

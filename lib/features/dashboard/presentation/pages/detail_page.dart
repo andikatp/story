@@ -28,12 +28,6 @@ class DetailPage extends StatelessWidget {
         titleTextStyle:
             context.titleSmall.copyWith(color: Colours.primaryColor),
         centerTitle: false,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.chevron_left),
-          iconSize: Sizes.p44.sp,
-          color: Colours.primaryColor,
-        ),
       ),
       body: Stack(
         children: [
