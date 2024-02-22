@@ -1,4 +1,6 @@
 # 📖 Story
+[![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
+[![Dart](https://github.com/andikatp/story/actions/workflows/dart.yml/badge.svg)](https://github.com/andikatp/story/actions/workflows/dart.yml)
 
 A Social Media Flutter project developed using Clean Architechture and TDD with a lot of Tests.
 <table >
@@ -13,9 +15,6 @@ A Social Media Flutter project developed using Clean Architechture and TDD with 
     <td align="center"><img src="https://github.com/andikatp/story/blob/main/img/6.png" height="500" /></td>
   </tr>
 </table>
-
-[![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
-[![Dart](https://github.com/andikatp/story/actions/workflows/dart.yml/badge.svg)](https://github.com/andikatp/story/actions/workflows/dart.yml)
 
 ## 🎉 Features
 
