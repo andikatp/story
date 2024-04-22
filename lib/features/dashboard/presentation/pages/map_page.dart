@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:story/core/constants/app_sizes.dart';
 import 'package:story/core/res/colours.dart';
 
@@ -11,8 +12,10 @@ class MapPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Future<String?> getAddress(double lat, double lon) async {
+      if (await Permission.locationWhenInUse.isDenied) {
+        await Permission.locationWhenInUse.request();
+      }
       final placeMarks = await placemarkFromCoordinates(lat, lon);
       return '${placeMarks[0].street} ${placeMarks[0].subLocality}, '
           '${placeMarks[0].locality}';
