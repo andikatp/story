@@ -31,12 +31,13 @@ dependencies:
   geolocator: ^11.0.0
   get_it: ^7.6.7
   go_router: ^13.1.0
-  google_maps_flutter: ^2.5.3
+  google_maps_flutter: ^2.6.1
   http: ^1.2.0
   image_picker: ^1.0.7
   internet_connection_checker_plus: ^2.2.0
   json_annotation: ^4.8.1
   mocktail: ^1.0.3
+  permission_handler: ^11.3.1
   readmore: ^2.2.0
   shared_preferences: ^2.2.2
   slang: ^3.29.0
