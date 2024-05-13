@@ -15,7 +15,7 @@ A Social Media Flutter project developed using Clean Architechture and TDD with 
     <td align="center"><img src="https://github.com/andikatp/story/blob/main/img/6.png" height="500" /></td>
   </tr>
 </table>
-
+ 
 ## 🎉 Features
 
 - **Authentication**: Explore a curated list of stories in your dashboard.
