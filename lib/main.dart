@@ -19,7 +19,9 @@ Future<void> main() async {
   );
   await init();
   AppConfig.create(
-    appName: 'Story Free',
+    appName:
+        AppConfig.shared.flavor == Flavor.paid ? 'Story Paid' : 'Story Free',
+    flavor: AppConfig.shared.flavor == Flavor.paid ? Flavor.paid : Flavor.free,
   );
   runApp(
     EasyLocalization(
