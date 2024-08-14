@@ -23,7 +23,7 @@ A Social Media Flutter project developed using Clean Architechture and TDD with 
 - **Maps**: Get location from each story including yours.
 - **Detail**: View detailed information about each story.
 
-## 🏗️ Architecture
+## 🏗️ Architecture 
 
 The project follows the principles of Clean Architecture, emphasizing separation of concerns and maintainability. It is structured into distinct layers, including:
 
